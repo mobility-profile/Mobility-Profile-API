@@ -48,7 +48,7 @@ public class RemoteConnectionHandler implements ServiceConnection {
     /**
      * Tells if we are connected to the remote service.
      *
-     * @return True if connected, false otherwise.
+     * @return True if connected, false otherwise
      */
     public boolean isBound() {
         return isBound;
@@ -57,7 +57,7 @@ public class RemoteConnectionHandler implements ServiceConnection {
     /**
      * Returns the messenger used for sending requests to the mobility profile.
      *
-     * @return Messenger for sending requests.
+     * @return Messenger for sending requests
      */
     public Messenger getRequestCreatorMessenger() {
         return requestCreatorMessenger;
