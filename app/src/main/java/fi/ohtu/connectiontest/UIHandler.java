@@ -2,6 +2,7 @@ package fi.ohtu.connectiontest;
 
 import android.widget.EditText;
 
+import fi.ohtu.connectiontest.remoteconnection.RequestCreator;
 import fi.ohtu.connectiontest.remoteconnection.ResponseListener;
 
 /**

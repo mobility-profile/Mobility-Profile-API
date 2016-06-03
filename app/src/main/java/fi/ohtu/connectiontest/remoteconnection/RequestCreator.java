@@ -59,9 +59,11 @@ public class RequestCreator {
                 // Make the invocation.
                 requestCreatorMessenger.send(message);
             } catch (RemoteException rme) {
-                Toast.makeText(context, "Invocation failed!", Toast.LENGTH_SHORT).show();
+                if (context != null) {
+                    Toast.makeText(context, "Invocation failed!", Toast.LENGTH_SHORT).show();
+                }
             }
-        } else {
+        } else if (context != null) {
             Toast.makeText(context, "Service is not bound!", Toast.LENGTH_SHORT).show();
         }
     }
