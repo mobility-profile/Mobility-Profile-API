@@ -9,20 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fi.ohtu.connectiontest.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/destination"
+        android:text="Destination"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <Button
@@ -34,5 +27,15 @@
         android:layout_below="@+id/destination"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Start place"
+        android:layout_above="@+id/destination"
+        android:layout_marginBottom="42dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

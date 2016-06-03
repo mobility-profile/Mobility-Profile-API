@@ -13,21 +13,15 @@ import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
  * This class is used for sending requests to the mobility profile.
  */
 public class RequestCreator {
-    private Context context;
     private RemoteConnectionHandler remoteConnectionHandler;
-    private Messenger incomingRequestMessenger;
 
     /**
      * Creates the RequestCreator.
      *
-     * @param context Context used for toasts
      * @param remoteConnectionHandler Connection handler for the service
-     * @param incomingRequestMessenger Messenger used for receiving messages from the mobility profile
      */
-    public RequestCreator(Context context, RemoteConnectionHandler remoteConnectionHandler, Messenger incomingRequestMessenger) {
-        this.context = context;
+    public RequestCreator(RemoteConnectionHandler remoteConnectionHandler) {
         this.remoteConnectionHandler = remoteConnectionHandler;
-        this.incomingRequestMessenger = incomingRequestMessenger;
     }
 
     /**
@@ -42,29 +36,12 @@ public class RequestCreator {
     }
 
     private void makeRequest(int requestCode, String info) {
-        if (remoteConnectionHandler.isBound()) {
-            Messenger requestCreatorMessenger = remoteConnectionHandler.getRequestCreatorMessenger();
-            assert requestCreatorMessenger != null : "RequestCreatorMessenger should not be null when bound to the service!";
+        // Setup the message for invocation.
+        Bundle bundle = new Bundle();
+        bundle.putString(""+requestCode, info);
+        Message message = Message.obtain(null, requestCode);
+        message.setData(bundle);
 
-            // Setup the message for invocation.
-            Bundle bundle = new Bundle();
-            bundle.putString(""+requestCode, info);
-            Message message = Message.obtain(null, requestCode);
-            message.setData(bundle);
-
-            try {
-                // Set the ReplyTo messenger for processing the invocation response.
-                message.replyTo = incomingRequestMessenger;
-
-                // Make the invocation.
-                requestCreatorMessenger.send(message);
-            } catch (RemoteException rme) {
-                if (context != null) {
-                    Toast.makeText(context, "Invocation failed!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else if (context != null) {
-            Toast.makeText(context, "Service is not bound!", Toast.LENGTH_SHORT).show();
-        }
+        remoteConnectionHandler.sendRequest(message);
     }
 }

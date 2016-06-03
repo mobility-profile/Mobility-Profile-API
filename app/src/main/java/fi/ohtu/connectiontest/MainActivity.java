@@ -8,8 +8,6 @@ import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
 import fi.ohtu.connectiontest.remoteconnection.RequestCreator;
 
 public class MainActivity extends MobilityProfileApp {
-    private RequestCreator requestCreator;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,10 +17,9 @@ public class MainActivity extends MobilityProfileApp {
         uiHandler.setDestinationField((EditText) findViewById(R.id.destination));
 
         setResponseListener(new ResponseHandler(uiHandler));
-        requestCreator = getRequestCreator();
     }
 
     public void invoke(View view) {
-        requestCreator.requestMostLikelyDestination();
+        mobilityProfile.requestMostLikelyDestination();
     }
 }

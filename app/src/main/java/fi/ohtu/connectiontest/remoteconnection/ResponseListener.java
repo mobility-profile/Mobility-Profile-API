@@ -5,6 +5,16 @@ package fi.ohtu.connectiontest.remoteconnection;
  */
 public interface ResponseListener {
     /**
+     * This method is called when we get connected to the mobility profile.
+     */
+    void onConnect();
+
+    /**
+     * This method is called when we get disconnected from the mobility profile.
+     */
+    void onDisconnect();
+
+    /**
      * This method is called when the mobility profile sends us the next destination
      * the user is most likely going.
      *

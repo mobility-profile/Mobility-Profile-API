@@ -1,0 +1,9 @@
+[note:MobilityProfile]<->[RemoteConnectionHandler]
+
+[RemoteConnectionHandler]<-[RequestCreator]
+[RequestCreator]<-[MobilityProfileApp]
+[RemoteConnectionHandler]<-[MobilityProfileApp]
+
+[RemoteConnectionHandler]->[IncomingRequestHandler]
+[RemoteConnectionHandler]->[<<Interface>>;ResponseListener]
+[IncomingRequestHandler]->[<<Interface>>;ResponseListener]

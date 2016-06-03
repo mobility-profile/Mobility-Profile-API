@@ -10,7 +10,7 @@ import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 /**
  * This class is used for processing incoming messages from the mobility profile.
  */
-public class IncomingRequestHandler extends Handler {
+public class IncomingRequestHandler {
     private Context context;
     private ResponseListener responseListener;
 
@@ -32,11 +32,12 @@ public class IncomingRequestHandler extends Handler {
         this.responseListener = responseListener;
     }
 
-    @Override
     public void handleMessage(Message msg) {
         assert responseListener != null : "ResponseListener is not set! You should do that in the activity's onCreate() method.";
 
-        Toast.makeText(context.getApplicationContext(), "Remote Service replied (" + msg.what + ")", Toast.LENGTH_SHORT).show();
+        if (context != null) {
+            Toast.makeText(context.getApplicationContext(), "Remote Service replied (" + msg.what + ")", Toast.LENGTH_SHORT).show();
+        }
 
         switch (msg.what) {
             case RESPOND_MOST_LIKELY_DESTINATION:

@@ -1,7 +1,6 @@
 package fi.ohtu.connectiontest.remoteconnection;
 
 import android.os.Bundle;
-import android.os.Messenger;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -10,15 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class MobilityProfileApp extends AppCompatActivity {
     private RemoteConnectionHandler remoteConnectionHandler;
     private IncomingRequestHandler incomingRequestHandler;
-    private RequestCreator requestCreator;
+    protected RequestCreator mobilityProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.remoteConnectionHandler = new RemoteConnectionHandler(this);
         this.incomingRequestHandler = new IncomingRequestHandler(this);
-        this.requestCreator = new RequestCreator(this, remoteConnectionHandler, new Messenger(incomingRequestHandler));
+        this.remoteConnectionHandler = new RemoteConnectionHandler(this, incomingRequestHandler);
+        this.mobilityProfile = new RequestCreator(remoteConnectionHandler);
     }
 
     @Override
@@ -43,14 +42,6 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
      */
     public void setResponseListener(ResponseListener responseListener) {
         incomingRequestHandler.setResponseListener(responseListener);
-    }
-
-    /**
-     * Returns the request creator that can be used for sending requests to the mobility profile.
-     *
-     * @return Request creator
-     */
-    public RequestCreator getRequestCreator() {
-        return requestCreator;
+        remoteConnectionHandler.setResponseListener(responseListener);
     }
 }
