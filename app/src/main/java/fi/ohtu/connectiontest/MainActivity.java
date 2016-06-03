@@ -16,7 +16,7 @@ public class MainActivity extends MobilityProfileApp {
         UIHandler uiHandler = new UIHandler();
         uiHandler.setDestinationField((EditText) findViewById(R.id.destination));
 
-        setResponseListener(new ResponseHandler(uiHandler));
+        setResponseListener(new ResponseHandler(uiHandler, mobilityProfile));
     }
 
     public void invoke(View view) {

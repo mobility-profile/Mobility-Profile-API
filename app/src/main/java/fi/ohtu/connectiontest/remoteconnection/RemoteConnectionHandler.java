@@ -32,7 +32,6 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
     public RemoteConnectionHandler(Context context, IncomingRequestHandler incomingRequestHandler) {
         this.context = context;
         this.incomingRequestHandler = incomingRequestHandler;
-        this.responseListener = responseListener;
 
         this.incomingRequestMessenger = new Messenger(this);
     }
