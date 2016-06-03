@@ -8,7 +8,8 @@ import android.widget.Toast;
 import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 
 /**
- * This class is used for processing incoming messages from the mobility profile.
+ * This class is used for processing incoming messages from the mobility profile. Processed
+ * messages are forwarded to the registered ResponseListener.
  */
 public class IncomingRequestHandler {
     private Context context;

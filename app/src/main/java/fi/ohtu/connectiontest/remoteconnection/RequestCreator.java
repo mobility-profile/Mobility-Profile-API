@@ -10,7 +10,12 @@ import android.widget.Toast;
 import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 
 /**
- * This class is used for sending requests to the mobility profile.
+ * RequestCreator is responsible for creating requests to the mobility profile. This class does not
+ * send the requests, it only creates them and then forwards them to RemoteConnectionHandler to be
+ * sent to the mobility profile.
+ *
+ * SetResponseListener() from MobilityProfileApp should be called before creating any requests in
+ * order to be sure that we have a registered listener for the response.
  */
 public class RequestCreator {
     private RemoteConnectionHandler remoteConnectionHandler;

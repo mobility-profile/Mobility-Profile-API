@@ -36,7 +36,7 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
 
     /**
      * Sets the response listener that will be used for handling incoming requests. This method
-     * should be called on the activity's onCreate() method.
+     * should be called from the activity's onCreate() method.
      *
      * @param responseListener Listener for incoming requests
      */

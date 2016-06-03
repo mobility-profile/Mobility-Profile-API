@@ -13,7 +13,13 @@ import android.os.RemoteException;
 import android.widget.Toast;
 
 /**
- * This class is used for communicating with the Mobility Profile.
+ * RemoteConnectionHandler is responsible for handling the communication with the mobility profile.
+ * When the main activity is started, startConnection() should be called to create the connection
+ * with the mobility profile. When the activity is stopped, stopConnection() should be called in
+ * order to save resources.
+ *
+ * Messages received from the mobility profile are forwarded to IncomingRequestHandler.
+ * SendRequest() is used by RequestCreator to send requests to the mobility profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
     private Context context;
@@ -28,6 +34,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
      * Creates the RemoteConnectionHandler.
      *
      * @param context Context used for binding the service
+     * @param incomingRequestHandler Handler for handling incoming messages
      */
     public RemoteConnectionHandler(Context context, IncomingRequestHandler incomingRequestHandler) {
         this.context = context;
