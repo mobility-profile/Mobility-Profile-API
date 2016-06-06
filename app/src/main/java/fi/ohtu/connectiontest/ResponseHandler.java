@@ -27,7 +27,9 @@ public class ResponseHandler implements ResponseListener {
 
     @Override
     public void onGetMostLikelyDestination(String destination) {
-        uiHandler.updateDestination(destination);
+        uiHandler.showPopup(destination);
+        // uiHandler.updateDestination(destination);
+        
     }
 
     @Override
