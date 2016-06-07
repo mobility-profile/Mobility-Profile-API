@@ -36,6 +36,9 @@ public class MessageCreator {
         makeRequest(REQUEST_MOST_LIKELY_DESTINATION);
     }
     
+    public void sendUsedDestination(String destination){
+        makeRequest(SEND_USED_DESTINATION, destination);
+    }
 
     public void acceptProposedRoute(String destination) {
         makeRequest(ACCEPT_ROUTE, destination);

@@ -27,7 +27,8 @@ public class MessageHandler implements MessageListener {
 
     @Override
     public void onGetMostLikelyDestination(String destination) {
-        uiHandler.showPopup(destination);
+        //uiHandler.showPopup(destination);
+        uiHandler.updateDestination(destination);
     }
 
     @Override

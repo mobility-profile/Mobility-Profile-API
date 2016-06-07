@@ -36,8 +36,6 @@ public class MainActivity extends MobilityProfileApp {
 
     public void searchTrip(View view) {
         Toast.makeText(getApplicationContext(), "etsitään trippiä", Toast.LENGTH_SHORT).show();
-
-
-
+        mobilityProfile.sendUsedDestination(((EditText) this.findViewById(R.id.destination)).getText().toString());
     }
 }
