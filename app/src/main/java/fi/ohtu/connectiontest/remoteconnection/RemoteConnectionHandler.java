@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -19,12 +18,12 @@ import android.widget.Toast;
  * order to save resources.
  *
  * Messages received from the mobility profile are forwarded to IncomingRequestHandler.
- * SendRequest() is used by RequestCreator to send requests to the mobility profile.
+ * SendRequest() is used by MessageCreator to send requests to the mobility profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
     private Context context;
     private IncomingRequestHandler incomingRequestHandler;
-    private ResponseListener responseListener;
+    private MessageListener messageListener;
 
     private Messenger requestCreatorMessenger;
     private Messenger incomingRequestMessenger;
@@ -102,10 +101,10 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
     /**
      * Sets the response listener that will be used for handling incoming requests.
      *
-     * @param responseListener Listener for incoming requests
+     * @param messageListener Listener for incoming requests
      */
-    public void setResponseListener(ResponseListener responseListener) {
-        this.responseListener = responseListener;
+    public void setMessageListener(MessageListener messageListener) {
+        this.messageListener = messageListener;
     }
 
     @Override
@@ -113,8 +112,8 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         requestCreatorMessenger = new Messenger(service);
         isBound = true;
 
-        assert responseListener != null : "ResponseListener is not set! You should do that in the activity's onCreate() method.";
-        responseListener.onConnect();
+        assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
+        messageListener.onConnect();
     }
 
     @Override
@@ -122,8 +121,8 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         requestCreatorMessenger = null;
         isBound = false;
 
-        assert responseListener != null : "ResponseListener is not set! You should do that in the activity's onCreate() method.";
-        responseListener.onDisconnect();
+        assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
+        messageListener.onDisconnect();
     }
 
     @Override

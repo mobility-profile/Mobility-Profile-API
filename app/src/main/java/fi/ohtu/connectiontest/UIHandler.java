@@ -6,13 +6,13 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import fi.ohtu.connectiontest.remoteconnection.RequestCreator;
+import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
 
 /**
  * This class is just for demonstrating how you could use the mobility profile.
  */
 public class UIHandler {
-    private RequestCreator mobilityProfile;
+    private MessageCreator mobilityProfile;
 
     private EditText destinationField;
     private PopupWindow askTripPopup;
@@ -20,7 +20,7 @@ public class UIHandler {
     private Button btnYes;
     private Button btnNo;
 
-    public UIHandler(RequestCreator mobilityProfile) {
+    public UIHandler(MessageCreator mobilityProfile) {
         this.mobilityProfile = mobilityProfile;
     }
 
