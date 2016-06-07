@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Invoke"
         android:id="@+id/button"
-        android:onClick="invoke"
+        android:onClick="searchTrip"
         android:layout_below="@+id/destination"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="83dp" />

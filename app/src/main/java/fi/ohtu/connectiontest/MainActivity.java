@@ -8,6 +8,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
 import fi.ohtu.connectiontest.remoteconnection.RequestCreator;
@@ -34,7 +35,10 @@ public class MainActivity extends MobilityProfileApp {
         setResponseListener(new ResponseHandler(uiHandler, mobilityProfile));
     }
 
-    public void invoke(View view) {
-        mobilityProfile.requestMostLikelyDestination();
+    public void searchTrip(View view) {
+        Toast.makeText(getApplicationContext(), "etsitään trippiä", Toast.LENGTH_SHORT).show();
+
+
+
     }
 }
