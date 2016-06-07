@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
-import fi.ohtu.connectiontest.remoteconnection.RequestCreator;
 
 public class MainActivity extends MobilityProfileApp {
     @Override
@@ -32,7 +31,7 @@ public class MainActivity extends MobilityProfileApp {
         uiHandler.setBtnYes((Button) popupView.findViewById(R.id.yes));
         uiHandler.setBtnNo((Button) popupView.findViewById(R.id.no));
 
-        setResponseListener(new ResponseHandler(uiHandler, mobilityProfile));
+        setResponseListener(new MessageHandler(uiHandler, mobilityProfile));
     }
 
     public void searchTrip(View view) {

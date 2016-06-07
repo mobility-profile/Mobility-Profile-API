@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class MobilityProfileApp extends AppCompatActivity {
     private RemoteConnectionHandler remoteConnectionHandler;
     private IncomingRequestHandler incomingRequestHandler;
-    protected RequestCreator mobilityProfile;
+    protected MessageCreator mobilityProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
 
         this.incomingRequestHandler = new IncomingRequestHandler(this);
         this.remoteConnectionHandler = new RemoteConnectionHandler(this, incomingRequestHandler);
-        this.mobilityProfile = new RequestCreator(remoteConnectionHandler);
+        this.mobilityProfile = new MessageCreator(remoteConnectionHandler);
     }
 
     @Override
@@ -38,10 +38,10 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
      * Sets the response listener that will be used for handling incoming requests. This method
      * should be called from the activity's onCreate() method.
      *
-     * @param responseListener Listener for incoming requests
+     * @param messageListener Listener for incoming requests
      */
-    public void setResponseListener(ResponseListener responseListener) {
-        incomingRequestHandler.setResponseListener(responseListener);
-        remoteConnectionHandler.setResponseListener(responseListener);
+    public void setResponseListener(MessageListener messageListener) {
+        incomingRequestHandler.setMessageListener(messageListener);
+        remoteConnectionHandler.setMessageListener(messageListener);
     }
 }
