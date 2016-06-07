@@ -36,6 +36,14 @@ public class RequestCreator {
         makeRequest(REQUEST_MOST_LIKELY_DESTINATION);
     }
 
+    public void acceptProposedRoute(String destination) {
+        makeRequest(ACCEPT_ROUTE, destination);
+    }
+
+    public void discardProposedRoute(String destination) {
+        makeRequest(DISCARD_ROUTE, destination);
+    }
+
     private void makeRequest(int requestCode) {
         makeRequest(requestCode, "");
     }

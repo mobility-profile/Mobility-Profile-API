@@ -2,7 +2,8 @@ package fi.ohtu.connectiontest;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.LayoutInflater;import android.widget.EditText;
+import android.view.LayoutInflater;
+import android.widget.EditText;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.Button;
@@ -17,26 +18,18 @@ public class MainActivity extends MobilityProfileApp {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UIHandler uiHandler = new UIHandler();
+        UIHandler uiHandler = new UIHandler(mobilityProfile);
         uiHandler.setDestinationField((EditText) findViewById(R.id.destination));
-        
+
         // Popup window
-        LayoutInflater layoutInflater = (LayoutInflater)getBaseContext()
-          .getSystemService(LAYOUT_INFLATER_SERVICE);  
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = layoutInflater.inflate(R.layout.popup, null);
         final PopupWindow askTripPopup = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        Button btnNo = (Button) popupView.findViewById(R.id.no);
-        btnNo.setOnClickListener(new Button.OnClickListener(){
-            
-            @Override
-            public void onClick(View v) {
-                // Todo: send "false" message to mobility profile
-                askTripPopup.dismiss();
-            }
-        });
-uiHandler.setAskTripPopup(askTripPopup);        
-uiHandler.setPopupText((TextView) popupView.findViewById(R.id.popuptext));
-uiHandler.setBtnYes((Button) popupView.findViewById(R.id.yes));
+        uiHandler.setAskTripPopup(askTripPopup);
+        uiHandler.setPopupText((TextView) popupView.findViewById(R.id.popuptext));
+        uiHandler.setBtnYes((Button) popupView.findViewById(R.id.yes));
+        uiHandler.setBtnNo((Button) popupView.findViewById(R.id.no));
 
         setResponseListener(new ResponseHandler(uiHandler, mobilityProfile));
     }
