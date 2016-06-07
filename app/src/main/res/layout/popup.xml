@@ -18,17 +18,17 @@
       android:layout_margin="20dp">
       <TextView
           android:id="@+id/popuptext"
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="It's a PopupWindow" />
       <Button
           android:id="@+id/no"
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="No" />
       <Button
           android:id="@+id/yes"
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Yes" />
       </LinearLayout>
