@@ -15,7 +15,7 @@ import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
  * sent to the mobility profile.
  *
  * SetResponseListener() from MobilityProfileApp should be called before creating any requests in
- * order to be sure that we have a registered listener for the response.
+ * order to make sure we have a registered listener for the response.
  */
 public class MessageCreator {
     private RemoteConnectionHandler remoteConnectionHandler;

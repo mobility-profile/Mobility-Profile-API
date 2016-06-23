@@ -40,7 +40,7 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
      *
      * @param messageListener Listener for incoming requests
      */
-    public void setResponseListener(MessageListener messageListener) {
+    public void setMessageListener(MessageListener messageListener) {
         incomingRequestHandler.setMessageListener(messageListener);
         remoteConnectionHandler.setMessageListener(messageListener);
     }
