@@ -8,7 +8,7 @@ public class WebAppInterface {
     private Context context;
     private MessageHandler messageHandler;
 
-    WebAppInterface(Context context, MessageHandler messageHandler) {
+    public WebAppInterface(Context context, MessageHandler messageHandler) {
         this.context = context;
         this.messageHandler = messageHandler;
     }
@@ -18,6 +18,7 @@ public class WebAppInterface {
         return messageHandler.getMostProbableDestination();
     }
 
+    @JavascriptInterface
     public void update(String toast) {
         System.out.println("JEE");
         Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
