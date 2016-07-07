@@ -10,16 +10,16 @@ import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
  * This class is used for processing incoming messages from the mobility profile. Processed
  * messages are forwarded to the registered MessageListener.
  */
-public class IncomingRequestHandler {
+public class IncomingMessageHandler {
     private Context context;
     private MessageListener messageListener;
 
     /**
-     * Creates the IncomingRequestHandler.
+     * Creates the IncomingMessageHandler.
      *
      * @param context Context used for toasts
      */
-    public IncomingRequestHandler(Context context) {
+    public IncomingMessageHandler(Context context) {
         this.context = context;
     }
 

@@ -17,12 +17,12 @@ import android.widget.Toast;
  * with the mobility profile. When the activity is stopped, stopConnection() should be called in
  * order to save resources.
  *
- * Messages received from the mobility profile are forwarded to IncomingRequestHandler.
+ * Messages received from the mobility profile are forwarded to IncomingMessageHandler.
  * SendRequest() is used by MessageCreator to send requests to the mobility profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
     private Context context;
-    private IncomingRequestHandler incomingRequestHandler;
+    private IncomingMessageHandler incomingMessageHandler;
     private MessageListener messageListener;
 
     private Messenger requestCreatorMessenger;
@@ -33,11 +33,11 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
      * Creates the RemoteConnectionHandler.
      *
      * @param context Context used for binding the service
-     * @param incomingRequestHandler Handler for handling incoming messages
+     * @param incomingMessageHandler Handler for handling incoming messages
      */
-    public RemoteConnectionHandler(Context context, IncomingRequestHandler incomingRequestHandler) {
+    public RemoteConnectionHandler(Context context, IncomingMessageHandler incomingMessageHandler) {
         this.context = context;
-        this.incomingRequestHandler = incomingRequestHandler;
+        this.incomingMessageHandler = incomingMessageHandler;
 
         this.incomingRequestMessenger = new Messenger(this);
     }
@@ -127,6 +127,6 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
 
     @Override
     public void handleMessage(Message msg) {
-        incomingRequestHandler.handleMessage(msg);
+        incomingMessageHandler.handleMessage(msg);
     }
 }
