@@ -7,11 +7,10 @@ import fi.ohtu.connectiontest.remoteconnection.MessageListener;
  * This class is just for demonstrating how you could use the mobility profile.
  */
 public class MessageHandler implements MessageListener {
-    private UIHandler uiHandler;
     private MessageCreator mobilityProfile;
+    private String nextDestination = "home";
 
-    public MessageHandler(UIHandler uiHandler, MessageCreator messageCreator) {
-        this.uiHandler = uiHandler;
+    public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
     }
 
@@ -27,12 +26,15 @@ public class MessageHandler implements MessageListener {
 
     @Override
     public void onGetMostLikelyDestination(String destination) {
-        //uiHandler.showPopup(destination);
-        uiHandler.updateDestination(destination);
+        nextDestination = destination;
     }
 
     @Override
     public void onUnknownCode() {
 
+    }
+
+    public String getMostProbableDestination() {
+        return nextDestination;
     }
 }
