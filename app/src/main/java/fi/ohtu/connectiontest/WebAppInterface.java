@@ -19,7 +19,7 @@ public class WebAppInterface {
     }
 
     public void update(String toast) {
-        //System.out.println(toast);
+        System.out.println("JEE");
         Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
     }
 }

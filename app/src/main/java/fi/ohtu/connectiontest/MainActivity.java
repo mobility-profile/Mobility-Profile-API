@@ -42,7 +42,7 @@ public class MainActivity extends MobilityProfileApp {
         Push your digitransit-ui changes to remote,
         change URL to https://digitransit.herokuapp.com/
          */
-        webview.loadUrl("http://192.168.1.124:5000/");
+        webview.loadUrl("https://digitransit.herokuapp.com/");
     }
 
     @Override
