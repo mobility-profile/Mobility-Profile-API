@@ -2,6 +2,7 @@ package fi.ohtu.connectiontest;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 
 public class WebAppInterface {
     Context mContext;
@@ -11,7 +12,8 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void update() {
-        System.out.println("JIPII");
+    public void update(String toast) {
+        //System.out.println(toast);
+        Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
     }
 }

@@ -45,11 +45,23 @@ public class MainActivity extends MobilityProfileApp {
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        webview.setWebViewClient(new WebViewClient());
+        webview.setWebViewClient(new MyWebViewClient());
 
         webview.addJavascriptInterface(new WebAppInterface(this), "MobilityProfile");
 
-        webview.loadUrl("http://beta.digitransit.fi");
+        /*
+        DEVELOPMENT:
+        After changes to digitransit-ui run "npm run build" + "heroku local",
+        connect your mobile to same network as your computer,
+        change URL to your localhost ip (on mac run ifconfig and find ip e.g. http://192.168.1.124:5000/)
+        After changes to Mobility-Profile-API just hit RUN
+
+        PRODUCTION:
+        Push your digitransit-ui changes to remote,
+        change URL to https://digitransit.herokuapp.com/
+         */
+        webview.loadUrl("http://192.168.1.124:5000/");
+
 
 
 
@@ -87,6 +99,8 @@ public class MainActivity extends MobilityProfileApp {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             System.out.println("AAA " + url);
+            String str = "EXACTUM";
+            view.loadUrl("javascript:toinenSuunta('"+str+"')");
         }
 
         @Override
