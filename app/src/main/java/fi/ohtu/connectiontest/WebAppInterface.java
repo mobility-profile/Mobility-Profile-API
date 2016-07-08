@@ -19,8 +19,8 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void update(String toast) {
-        System.out.println("JEE");
-        Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
+    public void sendUsedSearchDestination(String destination) {
+        //reittiopas kutsuu tätä kun tekee haun
+        Toast.makeText(context, destination, Toast.LENGTH_SHORT).show();
     }
 }
