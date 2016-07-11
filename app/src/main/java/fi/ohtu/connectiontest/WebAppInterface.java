@@ -22,5 +22,6 @@ public class WebAppInterface {
     public void sendUsedSearchDestination(String destination) {
         //reittiopas kutsuu tätä kun tekee haun
         Toast.makeText(context, destination, Toast.LENGTH_SHORT).show();
+        System.out.println("JEEEEE");
     }
 }
