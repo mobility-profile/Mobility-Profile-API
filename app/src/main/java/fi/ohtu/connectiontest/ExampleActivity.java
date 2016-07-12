@@ -9,7 +9,7 @@ import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
 This is a basic example of how to integrate Mobility Profile to your journey planner app.
  */
 
-// Your MainActivity should override MobilityProfileApp
+// Your MainActivity should extend MobilityProfileApp
 public class ExampleActivity extends MobilityProfileApp {
     @Override
     public void onCreate(Bundle savedInstanceState) {

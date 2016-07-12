@@ -47,7 +47,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
      */
     public void startConnection() {
         Intent intent = new Intent();
-        intent.setClassName("fi.ohtu.mobilityprofile", "fi.ohtu.mobilityprofile.RemoteService");
+        intent.setClassName("fi.ohtu.mobilityprofile", "fi.ohtu.mobilityprofile.remoteconnection.RemoteService");
 
         context.bindService(intent, this, Context.BIND_AUTO_CREATE);
     }
