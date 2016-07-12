@@ -1,5 +1,6 @@
 package fi.ohtu.connectiontest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
@@ -50,4 +51,6 @@ public class MainActivity extends MobilityProfileApp {
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event);
     }
+    
+    
 }
