@@ -8,7 +8,7 @@ import fi.ohtu.connectiontest.remoteconnection.MessageListener;
  */
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
-    private String nextDestination = "home";
+    private String nextDestination = "NO SUGGESTION";
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
@@ -34,6 +34,11 @@ public class MessageHandler implements MessageListener {
 
     }
 
+    /**
+     * Returns the most probable destination Mobility Profile has suggested to us.
+     *
+     * @return Most probable destination
+     */
     public String getMostProbableDestination() {
         return nextDestination;
     }
