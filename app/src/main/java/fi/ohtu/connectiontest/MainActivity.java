@@ -1,15 +1,10 @@
 package fi.ohtu.connectiontest;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import fi.ohtu.connectiontest.remoteconnection.MessageListener;
 import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
 
 public class MainActivity extends MobilityProfileApp {
@@ -26,8 +21,6 @@ public class MainActivity extends MobilityProfileApp {
         webview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        webview.setWebViewClient(new MyWebViewClient());
 
         webview.addJavascriptInterface(new WebAppInterface(this, messageHandler), "MobilityProfile");
 
@@ -56,34 +49,5 @@ public class MainActivity extends MobilityProfileApp {
         // If it wasn't the Back key or there's no web page history, bubble up to the default
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event);
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
-            System.out.println("AAA " + url);
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            System.out.println("AAA " + url);
-            String str = "EXACTUM";
-            view.loadUrl("javascript:toinenSuunta('"+str+"')");
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            super.shouldOverrideUrlLoading(view, url);
-            System.out.println("AAA " + url);
-
-            return false;
-        }
-
-        @Override
-        public void doUpdateVisitedHistory(WebView view, String url, boolean isReload) {
-            System.out.println("AAA " + url);
-        }
     }
 }
