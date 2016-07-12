@@ -1,15 +1,11 @@
 package fi.ohtu.connectiontest;
 
-import android.content.Context;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
 public class WebAppInterface {
-    private Context context;
     private MessageHandler messageHandler;
 
-    public WebAppInterface(Context context, MessageHandler messageHandler) {
-        this.context = context;
+    public WebAppInterface(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
     }
 
@@ -21,7 +17,6 @@ public class WebAppInterface {
     @JavascriptInterface
     public void sendUsedSearchDestination(String destination) {
         //reittiopas kutsuu tätä kun tekee haun
-        Toast.makeText(context, destination, Toast.LENGTH_SHORT).show();
         System.out.println("JEEEEE");
     }
 }
