@@ -15,7 +15,7 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.incomingMessageHandler = new IncomingMessageHandler(this);
+        this.incomingMessageHandler = new IncomingMessageHandler();
         this.remoteConnectionHandler = new RemoteConnectionHandler(this, incomingMessageHandler);
         this.mobilityProfile = new MessageCreator(remoteConnectionHandler);
     }

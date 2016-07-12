@@ -2,6 +2,7 @@ package fi.ohtu.connectiontest.remoteconnection;
 
 import android.content.Context;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
@@ -11,16 +12,12 @@ import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
  * messages are forwarded to the registered MessageListener.
  */
 public class IncomingMessageHandler {
-    private Context context;
     private MessageListener messageListener;
 
     /**
      * Creates the IncomingMessageHandler.
-     *
-     * @param context Context used for toasts
      */
-    public IncomingMessageHandler(Context context) {
-        this.context = context;
+    public IncomingMessageHandler() {
     }
 
     /**
@@ -35,9 +32,7 @@ public class IncomingMessageHandler {
     public void handleMessage(Message msg) {
         assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
 
-        if (context != null) {
-            Toast.makeText(context.getApplicationContext(), "Remote Service replied (" + msg.what + ")", Toast.LENGTH_SHORT).show();
-        }
+        Log.d("Remote service", "Remote Service replied (" + msg.what + ")");
 
         switch (msg.what) {
             case RESPOND_MOST_LIKELY_DESTINATION:
