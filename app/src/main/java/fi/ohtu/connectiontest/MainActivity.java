@@ -1,6 +1,5 @@
 package fi.ohtu.connectiontest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
@@ -23,7 +22,7 @@ public class MainActivity extends MobilityProfileApp {
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        webview.addJavascriptInterface(new WebAppInterface(this, messageHandler), "MobilityProfile");
+        webview.addJavascriptInterface(new WebAppInterface(messageHandler), "MobilityProfile");
 
         /*
         DEVELOPMENT:
@@ -51,6 +50,4 @@ public class MainActivity extends MobilityProfileApp {
         // system behavior (probably exit the activity)
         return super.onKeyDown(keyCode, event);
     }
-    
-    
 }
