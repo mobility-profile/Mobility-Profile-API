@@ -2,6 +2,8 @@ package fi.ohtu.connectiontest;
 
 import android.webkit.JavascriptInterface;
 
+import java.util.ArrayList;
+
 public class WebAppInterface {
     private MessageHandler messageHandler;
 
@@ -12,6 +14,11 @@ public class WebAppInterface {
     @JavascriptInterface
     public String getMostProbableDestination() {
         return messageHandler.getMostProbableDestination();
+    }
+
+    @JavascriptInterface
+    public ArrayList<String> getListOfMostProbableDestinations() {
+        return messageHandler.getListOfMostProbableDestionations();
     }
 
     @JavascriptInterface

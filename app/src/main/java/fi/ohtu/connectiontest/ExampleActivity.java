@@ -2,6 +2,8 @@ package fi.ohtu.connectiontest;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import fi.ohtu.connectiontest.remoteconnection.AbstractMessageListener;
 import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
 
@@ -32,6 +34,12 @@ public class ExampleActivity extends MobilityProfileApp {
                 // Mobility Profile responded to our request and sent the most probable next
                 // destination. Just put the destination to your journey planner's destination
                 // field or suggest it to the user in some other way.
+            }
+
+            @Override
+            public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
+                // Mobility Profile responded to our request and sent a list of the most probable next
+                // destinations. Suggest destinations to the user in a pop up list or in some other way.
             }
 
             // There are more methods for handling the events, check MessageListener's javadoc for
