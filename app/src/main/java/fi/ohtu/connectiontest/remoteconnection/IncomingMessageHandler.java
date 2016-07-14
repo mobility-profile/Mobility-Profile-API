@@ -38,6 +38,9 @@ public class IncomingMessageHandler {
             case RESPOND_MOST_LIKELY_DESTINATION:
                 messageListener.onGetMostLikelyDestination(msg.getData().getString(""+msg.what));
                 break;
+            case RESPOND_START_LOCATION:
+                messageListener.onGetStartLocation(msg.getData().getString(""+msg.what));
+                break;
             case ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownCode();
                 break;
