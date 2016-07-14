@@ -53,7 +53,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         try {
             context.bindService(intent, this, Context.BIND_AUTO_CREATE);
         } catch (SecurityException ex) {
-            Log.d("Remote Connection", "Permission to use Mobility Profile has not been granted");
+            Log.e("Remote Connection", "Permission to use Mobility Profile has not been granted");
         }
     }
 
