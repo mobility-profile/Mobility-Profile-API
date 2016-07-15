@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -27,7 +28,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
 
     private Messenger requestCreatorMessenger;
     private Messenger incomingRequestMessenger;
-    private boolean isBound;
+    private boolean isBound = false;
 
     /**
      * Creates the RemoteConnectionHandler.
@@ -49,7 +50,11 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         Intent intent = new Intent();
         intent.setClassName("fi.ohtu.mobilityprofile", "fi.ohtu.mobilityprofile.remoteconnection.RemoteService");
 
-        context.bindService(intent, this, Context.BIND_AUTO_CREATE);
+        try {
+            context.bindService(intent, this, Context.BIND_AUTO_CREATE);
+        } catch (SecurityException ex) {
+            Log.d("Remote Connection", "Permission to use Mobility Profile has not been granted");
+        }
     }
 
     /**
@@ -58,7 +63,6 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
     public void stopConnection() {
         if (isBound) {
             context.unbindService(this);
-            isBound = false;
         }
     }
 

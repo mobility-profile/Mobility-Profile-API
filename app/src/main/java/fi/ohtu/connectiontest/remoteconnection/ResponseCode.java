@@ -5,7 +5,13 @@ public class ResponseCode {
 
     public static final int SEND_USED_DESTINATION = 102;
 
+    public static final int REQUEST_START_LOCATION = 103;
+
+
     public static final int RESPOND_MOST_LIKELY_DESTINATION = 201;
+
+    public static final int RESPOND_START_LOCATION = 203;
+
 
     public static final int ACCEPT_ROUTE = 301;
 

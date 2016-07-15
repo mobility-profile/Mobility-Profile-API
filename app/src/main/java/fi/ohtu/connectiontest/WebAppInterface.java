@@ -19,8 +19,14 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
+
     public JSONArray getListOfMostProbableDestinations() {
         return convertListOfDestinationsToJson();
+    }
+
+    @JavascriptInterface
+    public String getStartLocation() {
+        return messageHandler.getStartLocation();
     }
 
     @JavascriptInterface
