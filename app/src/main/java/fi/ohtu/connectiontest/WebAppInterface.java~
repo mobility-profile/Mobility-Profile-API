@@ -19,6 +19,7 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
+
     public JSONArray getListOfMostProbableDestinations() {
         return convertListOfDestinationsToJson();
     }
