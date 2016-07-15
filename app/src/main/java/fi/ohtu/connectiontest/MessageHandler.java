@@ -52,7 +52,11 @@ public class MessageHandler implements MessageListener {
         return nextDestination;
     }
 
-    public ArrayList<String> getListOfMostProbableDestionations() {
+    /**
+     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
+     * @return List of the most probable destinations
+     */
+    public ArrayList<String> getListOfMostProbableDestinations() {
         return nextDestinations;
     }
 }
