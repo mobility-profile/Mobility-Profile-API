@@ -15,6 +15,11 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
+    public String getStartLocation() {
+        return messageHandler.getStartLocation();
+    }
+
+    @JavascriptInterface
     public void sendUsedSearchDestination(String destination) {
         //reittiopas kutsuu tätä kun tekee haun
         System.out.println("JEEEEE");

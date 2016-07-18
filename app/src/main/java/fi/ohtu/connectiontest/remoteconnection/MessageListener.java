@@ -23,6 +23,14 @@ public interface MessageListener {
     void onGetMostLikelyDestination(String destination);
 
     /**
+     * This method is called when the mobility profile sends us the start location where
+     * the user is now.
+     *
+     * @param location Most likely next destination
+     */
+    void onGetStartLocation(String location);
+
+    /**
      * This method is called when we sent an unknown code to the mobility profile.
      */
     void onUnknownCode();
