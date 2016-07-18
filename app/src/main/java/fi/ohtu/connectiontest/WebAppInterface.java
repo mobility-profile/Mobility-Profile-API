@@ -6,8 +6,11 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
+
 public class WebAppInterface {
     private MessageHandler messageHandler;
+    private MessageCreator messageCreator;
 
     public WebAppInterface(MessageHandler messageHandler) {
         this.messageHandler = messageHandler;
@@ -31,7 +34,7 @@ public class WebAppInterface {
     @JavascriptInterface
     public void sendUsedSearchDestination(String destination) {
         //reittiopas kutsuu tätä kun tekee haun
-        System.out.println("JEEEEE");
+        messageCreator.sendUsedDestination(destination);
     }
 
     private JSONArray convertListOfDestinationsToJson() {
