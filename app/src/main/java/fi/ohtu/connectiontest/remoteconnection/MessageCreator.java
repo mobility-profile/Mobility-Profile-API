@@ -35,13 +35,6 @@ public class MessageCreator {
     public void requestMostLikelyDestination() {
         makeRequest(REQUEST_MOST_LIKELY_DESTINATION);
     }
-
-    /**
-     * Request the start location from the mobility profile.
-     */
-    public void requestStartLocation() {
-        makeRequest(REQUEST_START_LOCATION);
-    }
     
     public void sendUsedDestination(String destination){
         makeRequest(SEND_USED_DESTINATION, destination);

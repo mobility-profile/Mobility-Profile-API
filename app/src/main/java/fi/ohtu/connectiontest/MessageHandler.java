@@ -22,7 +22,6 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onConnect() {
         mobilityProfile.requestMostLikelyDestination();
-        mobilityProfile.requestStartLocation();
     }
 
     @Override
@@ -36,11 +35,6 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
         nextDestinations = destinations;
-    }
-
-    @Override
-    public void onGetStartLocation(String location) {
-        startLocation = location;
     }
 
     @Override
@@ -63,11 +57,4 @@ public class MessageHandler implements MessageListener {
         return nextDestinations;
     }
 
-    /**
-     * Returns the start location Mobility Profile has given to us.
-     * @return Start location
-     */
-    public String getStartLocation() {
-        return startLocation;
-    }
 }

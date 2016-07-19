@@ -28,11 +28,6 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public String getStartLocation() {
-        return messageHandler.getStartLocation();
-    }
-
-    @JavascriptInterface
     public void sendUsedSearchDestination(String destination) {
         messageCreator.sendUsedDestination(destination);
     }
