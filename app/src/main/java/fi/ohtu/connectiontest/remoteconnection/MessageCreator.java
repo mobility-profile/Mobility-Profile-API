@@ -1,11 +1,7 @@
 package fi.ohtu.connectiontest.remoteconnection;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import android.widget.Toast;
 
 import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 
@@ -43,16 +39,8 @@ public class MessageCreator {
         makeRequest(REQUEST_START_LOCATION);
     }
     
-    public void sendUsedDestination(String destination){
-        makeRequest(SEND_USED_DESTINATION, destination);
-    }
-
-    public void acceptProposedRoute(String destination) {
-        makeRequest(ACCEPT_ROUTE, destination);
-    }
-
-    public void discardProposedRoute(String destination) {
-        makeRequest(DISCARD_ROUTE, destination);
+    public void sendUsedRoute(String startLocation, String destination){
+        makeRequest(SEND_USED_ROUTE, startLocation + " " + destination);
     }
 
     private void makeRequest(int requestCode) {

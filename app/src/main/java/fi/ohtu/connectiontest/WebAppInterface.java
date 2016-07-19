@@ -33,8 +33,8 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void sendUsedSearchDestination(String destination) {
-        messageCreator.sendUsedDestination(destination);
+    public void sendUsedRoute(String startLocation, String destination) {
+        messageCreator.sendUsedRoute(startLocation, destination);
     }
 
     private JSONArray convertListOfDestinationsToJson() {

@@ -3,7 +3,7 @@ package fi.ohtu.connectiontest.remoteconnection;
 public class ResponseCode {
     public static final int REQUEST_MOST_LIKELY_DESTINATION = 101;
 
-    public static final int SEND_USED_DESTINATION = 102;
+    public static final int SEND_USED_ROUTE = 102;
 
     public static final int REQUEST_START_LOCATION = 103;
 
