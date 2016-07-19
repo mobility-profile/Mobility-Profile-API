@@ -37,6 +37,7 @@ public class IncomingMessageHandler {
         switch (msg.what) {
             case RESPOND_MOST_LIKELY_DESTINATION:
                 //messageListener.onGetMostLikelyDestination(msg.getData().getString(""+msg.what));
+                System.out.println(msg.getData().getStringArrayList(""+msg.what));
                 messageListener.onGetListOfMostLikelyDestinations(msg.getData().getStringArrayList(""+msg.what));
                 break;
             case ERROR_UNKNOWN_CODE:

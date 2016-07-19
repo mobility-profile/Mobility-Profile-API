@@ -40,6 +40,7 @@ public class WebAppInterface {
                 jsonDestinations.put(destination);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return jsonDestinations;
     }

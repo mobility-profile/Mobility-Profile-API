@@ -12,7 +12,6 @@ public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
     private String nextDestination = "NO SUGGESTION";
     private ArrayList<String> nextDestinations;
-    private String startLocation = "NO SUGGESTION";
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
