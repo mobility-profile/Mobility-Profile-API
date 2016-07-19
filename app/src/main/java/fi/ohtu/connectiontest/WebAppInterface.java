@@ -12,8 +12,9 @@ public class WebAppInterface {
     private MessageHandler messageHandler;
     private MessageCreator messageCreator;
 
-    public WebAppInterface(MessageHandler messageHandler) {
+    public WebAppInterface(MessageHandler messageHandler, MessageCreator messageCreator) {
         this.messageHandler = messageHandler;
+        this.messageCreator = messageCreator;
     }
 
     @JavascriptInterface
@@ -33,7 +34,6 @@ public class WebAppInterface {
 
     @JavascriptInterface
     public void sendUsedSearchDestination(String destination) {
-        //reittiopas kutsuu tätä kun tekee haun
         messageCreator.sendUsedDestination(destination);
     }
 
