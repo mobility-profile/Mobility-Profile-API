@@ -22,7 +22,7 @@ public class MainActivity extends MobilityProfileApp {
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        webview.addJavascriptInterface(new WebAppInterface(messageHandler), "MobilityProfile");
+        webview.addJavascriptInterface(new WebAppInterface(messageHandler, mobilityProfile), "MobilityProfile");
 
         /*
         DEVELOPMENT:
