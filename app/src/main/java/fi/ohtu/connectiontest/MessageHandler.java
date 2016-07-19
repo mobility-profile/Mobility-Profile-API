@@ -1,5 +1,7 @@
 package fi.ohtu.connectiontest;
 
+import java.util.ArrayList;
+
 import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
 import fi.ohtu.connectiontest.remoteconnection.MessageListener;
 
@@ -9,10 +11,12 @@ import fi.ohtu.connectiontest.remoteconnection.MessageListener;
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
     private String nextDestination = "NO SUGGESTION";
+    private ArrayList<String> nextDestinations;
     private String startLocation = "NO SUGGESTION";
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
+        this.nextDestinations = new ArrayList<>();
     }
 
     @Override
@@ -27,6 +31,11 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onGetMostLikelyDestination(String destination) {
         nextDestination = destination;
+    }
+
+    @Override
+    public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
+        nextDestinations = destinations;
     }
 
     @Override
@@ -47,8 +56,15 @@ public class MessageHandler implements MessageListener {
     }
 
     /**
+     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
+     * @return List of the most probable destinations
+     */
+    public ArrayList<String> getListOfMostProbableDestinations() {
+        return nextDestinations;
+    }
+
+    /**
      * Returns the start location Mobility Profile has given to us.
-     *
      * @return Start location
      */
     public String getStartLocation() {

@@ -1,5 +1,7 @@
 package fi.ohtu.connectiontest.remoteconnection;
 
+import java.util.ArrayList;
+
 /**
  * Interface for listening to incoming requests from the mobility profile.
  */
@@ -23,12 +25,19 @@ public interface MessageListener {
     void onGetMostLikelyDestination(String destination);
 
     /**
+     * This method is called when the mobility profile sends us the list of next destinations
+     * the user is most likely going.
+     * @param destination List of most likely next destinations
+     */
+    void onGetListOfMostLikelyDestinations(ArrayList<String> destination);
+
+    /**
      * This method is called when the mobility profile sends us the start location where
      * the user is now.
-     *
      * @param location Most likely next destination
      */
     void onGetStartLocation(String location);
+
 
     /**
      * This method is called when we sent an unknown code to the mobility profile.
