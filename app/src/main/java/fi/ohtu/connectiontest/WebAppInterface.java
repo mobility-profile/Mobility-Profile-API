@@ -28,11 +28,6 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public String getStartLocation() {
-        return messageHandler.getStartLocation();
-    }
-
-    @JavascriptInterface
     public void sendUsedRoute(String startLocation, String destination) {
         messageCreator.sendUsedRoute(startLocation, destination);
     }

@@ -24,10 +24,6 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onGetStartLocation(String location) {
-    }
-
-    @Override
     public void onUnknownCode() {
     }
 }

@@ -2,6 +2,8 @@ package fi.ohtu.connectiontest;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.webkit.GeolocationPermissions;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -21,8 +23,18 @@ public class MainActivity extends MobilityProfileApp {
         webview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setDatabaseEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setGeolocationEnabled(true);
 
         webview.addJavascriptInterface(new WebAppInterface(messageHandler, mobilityProfile), "MobilityProfile");
+
+        webview.setWebChromeClient(new WebChromeClient() {
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+            }
+        });
 
         /*
         DEVELOPMENT:
