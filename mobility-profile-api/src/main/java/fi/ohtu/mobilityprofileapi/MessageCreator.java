@@ -30,7 +30,12 @@ public class MessageCreator {
         makeRequest(ResponseCode.REQUEST_MOST_LIKELY_DESTINATION);
     }
 
-    public void sendSearchedRoute(String startLocation, String destination){
+    public void sendSearchedRoute(String startLocation, String destination) {
+        if (startLocation.equals("") || destination.equals("")) {
+            // This was not actually a route search, the user just typed in the starting location
+            return;
+        }
+
         makeRequest(ResponseCode.SEND_SEARCHED_ROUTE, startLocation + "|" + destination);
     }
 
