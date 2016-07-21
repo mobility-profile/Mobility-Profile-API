@@ -53,6 +53,6 @@ public class ExampleActivity extends MobilityProfileApp {
 
         // When the user has searched for a trip, we should send information about it to the
         // MobilityProfile so future suggestions can be more accurate.
-        mobilityProfile.sendUsedRoute("Used destination");
+        //mobilityProfile.sendUsedRoute("Used destination");
     }
 }

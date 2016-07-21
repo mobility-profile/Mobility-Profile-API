@@ -23,7 +23,7 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public JSONArray getListOfMostProbableDestinations() {
+    public String getListOfMostProbableDestinations() {
         return convertListOfDestinationsToJson();
     }
 
@@ -32,12 +32,18 @@ public class WebAppInterface {
         messageCreator.sendUsedRoute(startLocation, destination);
     }
 
-    private JSONArray convertListOfDestinationsToJson() {
+    private String convertListOfDestinationsToJson() {
         ArrayList<String> destinations = messageHandler.getListOfMostProbableDestinations();
-        JSONArray jsonDestinations = new JSONArray();
+        String jsonDestinations = "";
         try {
-            for (String destination : destinations) {
-                jsonDestinations.put(destination);
+
+            for (int i = 0; i < destinations.size() ; i++) {
+                if (i == destinations.size()-1) {
+                    jsonDestinations += destinations.get(i);
+                } else {
+                    jsonDestinations += (destinations.get(i) + "!");
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
