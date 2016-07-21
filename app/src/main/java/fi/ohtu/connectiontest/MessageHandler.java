@@ -34,6 +34,7 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
         nextDestinations = destinations;
+        if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
     }
 
     @Override
