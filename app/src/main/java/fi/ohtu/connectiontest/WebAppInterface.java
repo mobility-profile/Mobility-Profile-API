@@ -29,7 +29,6 @@ public class WebAppInterface {
 
     @JavascriptInterface
     public void sendSearchedRoute(String startLocation, String destination) {
-        System.out.println(startLocation + " to " + destination);
         messageCreator.sendSearchedRoute(startLocation, destination);
     }
 
