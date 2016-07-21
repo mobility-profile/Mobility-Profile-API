@@ -31,7 +31,7 @@ public class MessageCreator {
     }
 
     public void sendSearchedRoute(String startLocation, String destination){
-        makeRequest(ResponseCode.SEND_SEARCHED_ROUTE, startLocation + " " + destination);
+        makeRequest(ResponseCode.SEND_SEARCHED_ROUTE, startLocation + "|" + destination);
     }
 
     private void makeRequest(int requestCode) {
