@@ -7,7 +7,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
+import fi.ohtu.mobilityprofileapi.MobilityProfileApp;
 
 public class MainActivity extends MobilityProfileApp {
     private WebView webview;

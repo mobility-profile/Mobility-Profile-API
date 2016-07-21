@@ -6,7 +6,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
+import fi.ohtu.mobilityprofileapi.MessageCreator;
 
 public class WebAppInterface {
     private MessageHandler messageHandler;

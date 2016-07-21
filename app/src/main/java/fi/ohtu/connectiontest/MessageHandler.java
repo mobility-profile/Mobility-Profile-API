@@ -2,8 +2,8 @@ package fi.ohtu.connectiontest;
 
 import java.util.ArrayList;
 
-import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
-import fi.ohtu.connectiontest.remoteconnection.MessageListener;
+import fi.ohtu.mobilityprofileapi.MessageCreator;
+import fi.ohtu.mobilityprofileapi.MessageListener;
 
 /**
  * This class is just for demonstrating how you could use the mobility profile.
