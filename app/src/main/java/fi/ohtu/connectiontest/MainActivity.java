@@ -7,7 +7,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import fi.ohtu.connectiontest.remoteconnection.MobilityProfileApp;
+import fi.ohtu.mobilityprofileapi.MobilityProfileApp;
 
 public class MainActivity extends MobilityProfileApp {
     private WebView webview;
@@ -49,6 +49,13 @@ public class MainActivity extends MobilityProfileApp {
          */
 
         webview.loadUrl("http://192.168.1.238:5000/");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        webview.destroy();
     }
 
     @Override

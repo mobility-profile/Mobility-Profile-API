@@ -1,11 +1,7 @@
-package fi.ohtu.connectiontest.remoteconnection;
+package fi.ohtu.mobilityprofileapi;
 
-import android.content.Context;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
-
-import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 
 /**
  * This class is used for processing incoming messages from the mobility profile. Processed
@@ -35,12 +31,12 @@ public class IncomingMessageHandler {
         Log.d("Remote service", "Remote Service replied (" + msg.what + ")");
 
         switch (msg.what) {
-            case RESPOND_MOST_LIKELY_DESTINATION:
+            case ResponseCode.RESPOND_MOST_LIKELY_DESTINATION:
                 //messageListener.onGetMostLikelyDestination(msg.getData().getString(""+msg.what));
                 //System.out.println((msg.getData().getStringArrayList(""+msg.what)));
                 messageListener.onGetListOfMostLikelyDestinations(msg.getData().getStringArrayList(""+msg.what));
                 break;
-            case ERROR_UNKNOWN_CODE:
+            case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownCode();
                 break;
             default:

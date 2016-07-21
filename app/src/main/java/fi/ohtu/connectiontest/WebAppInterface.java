@@ -6,7 +6,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import fi.ohtu.connectiontest.remoteconnection.MessageCreator;
+import fi.ohtu.mobilityprofileapi.MessageCreator;
 
 public class WebAppInterface {
     private MessageHandler messageHandler;
@@ -28,8 +28,8 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void sendUsedRoute(String startLocation, String destination) {
-        messageCreator.sendUsedRoute(startLocation, destination);
+    public void sendSearchedRoute(String startLocation, String destination) {
+        messageCreator.sendSearchedRoute(startLocation, destination);
     }
 
     private String convertListOfDestinationsToJson() {

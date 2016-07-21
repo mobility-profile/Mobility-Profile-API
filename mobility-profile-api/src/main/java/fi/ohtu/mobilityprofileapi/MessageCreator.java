@@ -1,9 +1,7 @@
-package fi.ohtu.connectiontest.remoteconnection;
+package fi.ohtu.mobilityprofileapi;
 
 import android.os.Bundle;
 import android.os.Message;
-
-import static fi.ohtu.connectiontest.remoteconnection.ResponseCode.*;
 
 /**
  * MessageCreator is responsible for creating requests to the mobility profile. This class does not
@@ -29,11 +27,16 @@ public class MessageCreator {
      * Request the most likely next destination from the mobility profile.
      */
     public void requestMostLikelyDestination() {
-        makeRequest(REQUEST_MOST_LIKELY_DESTINATION);
+        makeRequest(ResponseCode.REQUEST_MOST_LIKELY_DESTINATION);
     }
-    
-    public void sendUsedRoute(String startLocation, String destination){
-        makeRequest(SEND_USED_ROUTE, startLocation + " " + destination);
+
+    public void sendSearchedRoute(String startLocation, String destination) {
+        if (startLocation.equals("") || destination.equals("")) {
+            // This was not actually a route search, the user just typed in the starting location
+            return;
+        }
+
+        makeRequest(ResponseCode.SEND_SEARCHED_ROUTE, startLocation + "|" + destination);
     }
 
     private void makeRequest(int requestCode) {

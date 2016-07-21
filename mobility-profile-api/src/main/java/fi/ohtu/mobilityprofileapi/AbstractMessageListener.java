@@ -1,4 +1,4 @@
-package fi.ohtu.connectiontest.remoteconnection;
+package fi.ohtu.mobilityprofileapi;
 
 import java.util.ArrayList;
 

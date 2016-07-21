@@ -1,4 +1,4 @@
-package fi.ohtu.connectiontest.remoteconnection;
+package fi.ohtu.mobilityprofileapi;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
