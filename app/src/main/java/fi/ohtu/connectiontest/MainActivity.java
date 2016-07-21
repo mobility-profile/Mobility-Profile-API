@@ -53,7 +53,7 @@ public class MainActivity extends MobilityProfileApp {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        
+
         webview.destroy();
     }
 
