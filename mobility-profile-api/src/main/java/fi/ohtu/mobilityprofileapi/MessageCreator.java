@@ -29,9 +29,9 @@ public class MessageCreator {
     public void requestMostLikelyDestination() {
         makeRequest(ResponseCode.REQUEST_MOST_LIKELY_DESTINATION);
     }
-    
-    public void sendUsedRoute(String startLocation, String destination){
-        makeRequest(ResponseCode.SEND_USED_ROUTE, startLocation + " " + destination);
+
+    public void sendSearchedRoute(String startLocation, String destination){
+        makeRequest(ResponseCode.SEND_SEARCHED_ROUTE, startLocation + " " + destination);
     }
 
     private void makeRequest(int requestCode) {

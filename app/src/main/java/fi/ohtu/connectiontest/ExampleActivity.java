@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-import fi.ohtu.AbstractMessageListener;
-import fi.ohtu.MobilityProfileApp;
+import fi.ohtu.mobilityprofileapi.AbstractMessageListener;
+import fi.ohtu.mobilityprofileapi.MobilityProfileApp;
 
 /*
 This is a basic example of how to integrate Mobility Profile to your journey planner app.
@@ -53,6 +53,6 @@ public class ExampleActivity extends MobilityProfileApp {
 
         // When the user has searched for a trip, we should send information about it to the
         // MobilityProfile so future suggestions can be more accurate.
-        mobilityProfile.sendUsedRoute("Start location", "Used destination");
+        mobilityProfile.sendSearchedRoute("Start Location", "Used destination");
     }
 }
