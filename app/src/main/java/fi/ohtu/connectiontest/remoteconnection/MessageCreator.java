@@ -32,7 +32,7 @@ public class MessageCreator {
         makeRequest(REQUEST_MOST_LIKELY_DESTINATION);
     }
     
-    public void sendUsedRoute(String startLocation, String destination){
+    public void sendSearchedRoute(String startLocation, String destination){
         makeRequest(SEND_USED_ROUTE, startLocation + " " + destination);
     }
 
