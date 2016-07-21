@@ -51,6 +51,13 @@ public class MainActivity extends MobilityProfileApp {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        webview.destroy();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Check if the key event was the Back button and if there's history
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
