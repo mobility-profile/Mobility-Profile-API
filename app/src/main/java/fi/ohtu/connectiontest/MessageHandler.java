@@ -38,6 +38,9 @@ public class MessageHandler implements MessageListener {
     }
 
     @Override
+    public void onNoSuggestions() {}
+
+    @Override
     public void onUnknownCode() {}
 
     /**
