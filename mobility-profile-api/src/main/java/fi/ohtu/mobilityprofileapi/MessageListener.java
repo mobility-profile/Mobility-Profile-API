@@ -31,6 +31,10 @@ public interface MessageListener {
      */
     void onGetListOfMostLikelyDestinations(ArrayList<String> destination);
 
+    /**
+     * This method is called if Mobility Profile sends us an empty list of suggestions.
+     */
+    void onNoSuggestions();
 
     /**
      * This method is called when we sent an unknown code to the mobility profile.

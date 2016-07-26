@@ -3,6 +3,8 @@ package fi.ohtu.mobilityprofileapi;
 import android.os.Message;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * This class is used for processing incoming messages from the mobility profile. Processed
  * messages are forwarded to the registered MessageListener.
@@ -32,9 +34,17 @@ public class IncomingMessageHandler {
 
         switch (msg.what) {
             case ResponseCode.RESPOND_MOST_LIKELY_DESTINATION:
-                //messageListener.onGetMostLikelyDestination(msg.getData().getString(""+msg.what));
-                //System.out.println((msg.getData().getStringArrayList(""+msg.what)));
-                messageListener.onGetListOfMostLikelyDestinations(msg.getData().getStringArrayList(""+msg.what));
+                ArrayList<String> destinations = msg.getData().getStringArrayList(""+msg.what);
+                assert destinations != null : "Invalid response from Mobility Profile";
+
+                if (destinations.isEmpty()) {
+                    messageListener.onNoSuggestions();
+                }
+                else {
+                    messageListener.onGetMostLikelyDestination(destinations.get(0));
+                    messageListener.onGetListOfMostLikelyDestinations(destinations);
+                }
+
                 break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownCode();
