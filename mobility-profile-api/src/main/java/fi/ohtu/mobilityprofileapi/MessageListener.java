@@ -38,7 +38,7 @@ public interface MessageListener {
     void onNoSuggestions();
 
     /**
-     * This method is called when we sent an unknown code to the mobility profile.
+     * This method is called when we send an unknown code to Mobility Profile.
      */
     void onUnknownCode();
 }
