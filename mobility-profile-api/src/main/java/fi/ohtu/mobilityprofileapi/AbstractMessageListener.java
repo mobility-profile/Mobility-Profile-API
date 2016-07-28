@@ -24,6 +24,10 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
+    public void onNoSuggestions() {
+    }
+
+    @Override
     public void onUnknownCode() {
     }
 }
