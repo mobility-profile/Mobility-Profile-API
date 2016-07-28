@@ -26,20 +26,22 @@ public class ExampleActivity extends MobilityProfileApp {
             public void onConnect() {
                 // We got connected to the Mobility Profile, just request the most likely next
                 // destination.
-                mobilityProfile.requestMostLikelyDestination();
+                mobilityProfile.requestIntraCitySuggestions();
             }
 
             @Override
-            public void onGetMostLikelyDestination(String destination) {
-                // Mobility Profile responded to our request and sent the most probable next
-                // destination. Just put the destination to your journey planner's destination
-                // field or suggest it to the user in some other way.
+            public void onSuggestionsResponse(ArrayList<String> destinations) {
+                // Mobility Profile responded to our request and sent a list of the most probable
+                // next destinations. Suggest destinations to the user in a pop up list or in some
+                // other way.
+                // Note that onSuggestionsResponse(destination) will be called as well in case
+                // you want to use just the first suggestion.
             }
 
             @Override
-            public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
-                // Mobility Profile responded to our request and sent a list of the most probable next
-                // destinations. Suggest destinations to the user in a pop up list or in some other way.
+            public void onSuggestionsResponse(String destination) {
+                // Same as onSuggestionsResponse, but instead of a list, this method gives just the
+                // first suggestion.
             }
 
             // There are more methods for handling the events, check MessageListener's javadoc for

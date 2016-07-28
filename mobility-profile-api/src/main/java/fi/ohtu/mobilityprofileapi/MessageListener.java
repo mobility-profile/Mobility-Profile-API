@@ -17,19 +17,20 @@ public interface MessageListener {
     void onDisconnect();
 
     /**
-     * This method is called when the mobility profile sends us the next destination
-     * the user is most likely going.
+     * This method is called when Mobility Profile responds to our request. List of suggestions
+     * will be given as a parameter.
+     *
+     * @param destination List of most likely next destinations
+     */
+    void onSuggestionsResponse(ArrayList<String> destination);
+
+    /**
+     * This method is called when Mobility Profile responds to our request. The first suggestion
+     * will be given as a parameter.
      *
      * @param destination Most likely next destination
      */
-    void onGetMostLikelyDestination(String destination);
-
-    /**
-     * This method is called when the mobility profile sends us the list of next destinations
-     * the user is most likely going.
-     * @param destination List of most likely next destinations
-     */
-    void onGetListOfMostLikelyDestinations(ArrayList<String> destination);
+    void onSuggestionsResponse(String destination);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.

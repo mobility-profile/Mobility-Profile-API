@@ -41,8 +41,8 @@ public class IncomingMessageHandler {
                     messageListener.onNoSuggestions();
                 }
                 else {
-                    messageListener.onGetMostLikelyDestination(destinations.get(0));
-                    messageListener.onGetListOfMostLikelyDestinations(destinations);
+                    messageListener.onSuggestionsResponse(destinations.get(0));
+                    messageListener.onSuggestionsResponse(destinations);
                 }
 
                 break;

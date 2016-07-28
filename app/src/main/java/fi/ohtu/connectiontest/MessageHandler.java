@@ -20,19 +20,19 @@ public class MessageHandler implements MessageListener {
 
     @Override
     public void onConnect() {
-        mobilityProfile.requestMostLikelyDestination();
+        mobilityProfile.requestIntraCitySuggestions();
     }
 
     @Override
     public void onDisconnect() {}
 
     @Override
-    public void onGetMostLikelyDestination(String destination) {
+    public void onSuggestionsResponse(String destination) {
         nextDestination = destination;
     }
 
     @Override
-    public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
+    public void onSuggestionsResponse(ArrayList<String> destinations) {
         nextDestinations = destinations;
         if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
     }

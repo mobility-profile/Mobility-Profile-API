@@ -24,10 +24,17 @@ public class MessageCreator {
     }
 
     /**
-     * Request the most likely next destination from the mobility profile.
+     * Request a list if most likely next destinations when moving inside a city.
      */
-    public void requestMostLikelyDestination() {
-        makeRequest(ResponseCode.REQUEST_MOST_LIKELY_DESTINATION);
+    public void requestIntraCitySuggestions() {
+        makeRequest(ResponseCode.REQUEST_INTRA_CITY_SUGGESTIONS);
+    }
+
+    /**
+     * Request a list of most likely next destinations when moving between cities.
+     */
+    public void requestInterCitySuggestions() {
+        makeRequest(ResponseCode.REQUEST_INTER_CITY_SUGGESTIONS);
     }
 
     public void sendSearchedRoute(String startLocation, String destination) {

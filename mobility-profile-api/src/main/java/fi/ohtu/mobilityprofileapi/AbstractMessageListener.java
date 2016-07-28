@@ -16,11 +16,11 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onGetMostLikelyDestination(String destination) {
+    public void onSuggestionsResponse(String destination) {
     }
 
     @Override
-    public void onGetListOfMostLikelyDestinations(ArrayList<String> destinations) {
+    public void onSuggestionsResponse(ArrayList<String> destinations) {
     }
 
     @Override
