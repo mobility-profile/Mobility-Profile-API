@@ -40,7 +40,7 @@ public class ExampleActivity extends MobilityProfileApp {
             }
 
             @Override
-            public void onSuggestionsResponse(ArrayList<String> destinations) {
+            public void onSuggestionsResponse(ArrayList<String> suggestions) {
                 // Mobility Profile responded to our request and sent a list of the most probable
                 // next destinations. Suggest destinations to the user in a pop up list or in some
                 // other way.
@@ -54,7 +54,7 @@ public class ExampleActivity extends MobilityProfileApp {
             }
 
             @Override
-            public void onSuggestionsResponse(String destination) {
+            public void onSuggestionsResponse(String suggestion) {
                 // Same as onSuggestionsResponse, but instead of a list, this method gives just the
                 // first suggestion.
 
@@ -80,7 +80,7 @@ public class ExampleActivity extends MobilityProfileApp {
         // Some journey planner application logic.
         // ...
 
-        // When the user has searched for a trip, we should send information about it to the
+        // When the user has searched for a trip, we should send information about it to
         // MobilityProfile so future suggestions can be more accurate.
         mobilityProfile.sendSearchedRoute("Start Location", "Used destination");
     }

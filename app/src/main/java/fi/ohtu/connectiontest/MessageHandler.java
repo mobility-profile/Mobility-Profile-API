@@ -27,13 +27,13 @@ public class MessageHandler implements MessageListener {
     public void onDisconnect() {}
 
     @Override
-    public void onSuggestionsResponse(String destination) {
-        nextDestination = destination;
+    public void onSuggestionsResponse(String suggestion) {
+        nextDestination = suggestion;
     }
 
     @Override
-    public void onSuggestionsResponse(ArrayList<String> destinations) {
-        nextDestinations = destinations;
+    public void onSuggestionsResponse(ArrayList<String> suggestions) {
+        nextDestinations = suggestions;
         if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
     }
 
