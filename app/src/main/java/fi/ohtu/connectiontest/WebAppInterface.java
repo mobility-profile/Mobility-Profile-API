@@ -22,7 +22,7 @@ public class WebAppInterface {
 
     @JavascriptInterface
     public String getListOfMostProbableDestinations() {
-        return convertListOfDestinationsToJson();
+        return convertListOfDestinations();
     }
 
     @JavascriptInterface
@@ -30,22 +30,46 @@ public class WebAppInterface {
         messageCreator.sendSearchedRoute(startLocation, destination);
     }
 
-    private String convertListOfDestinationsToJson() {
+    @JavascriptInterface
+    public String getTransportModePreferences() {
+        return convertListOfTransportModes();
+    }
+
+    private String convertListOfDestinations() {
         List<String> destinations = messageHandler.getListOfMostProbableDestinations();
-        String jsonDestinations = "";
+        String dests = "";
         try {
 
             for (int i = 0; i < destinations.size() ; i++) {
                 if (i == destinations.size()-1) {
-                    jsonDestinations += destinations.get(i);
+                    dests += destinations.get(i);
                 } else {
-                    jsonDestinations += (destinations.get(i) + "!");
+                    dests += (destinations.get(i) + "!");
                 }
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return jsonDestinations;
+        return dests;
+    }
+
+    private String convertListOfTransportModes() {
+        List<String> modes = messageHandler.getListOfPreferredTransportModes();
+        String mods = "";
+        try {
+
+            for (int i = 0; i < modes.size() ; i++) {
+                if (i == modes.size()-1) {
+                    mods += modes.get(i);
+                } else {
+                    mods += (modes.get(i) + "!");
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mods;
     }
 }

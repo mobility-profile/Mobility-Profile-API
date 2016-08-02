@@ -34,6 +34,14 @@ public interface MessageListener {
     void onSuggestionsResponse(String suggestion);
 
     /**
+     * This method is called when Mobility Profile responds to our request. List of transport mode preferences
+     * will be given as a parameter.
+     *
+     * @param preferences List of the transport mode preferences
+     */
+    void onTransportPreferencesResponse(List<String> preferences);
+
+    /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.
      */
     void onNoSuggestions();

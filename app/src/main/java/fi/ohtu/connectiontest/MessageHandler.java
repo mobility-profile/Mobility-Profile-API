@@ -13,15 +13,18 @@ public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
     private String nextDestination = "NO SUGGESTION";
     private List<String> nextDestinations;
+    private List<String> preferredTransportModes;
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
         this.nextDestinations = new ArrayList<>();
+        this.preferredTransportModes = new ArrayList<>();
     }
 
     @Override
     public void onConnect() {
         mobilityProfile.requestIntraCitySuggestions();
+        //mobilityProfile.requestTransportModePreferences();
     }
 
     @Override
@@ -31,6 +34,11 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onSuggestionsResponse(String suggestion) {
         nextDestination = suggestion;
+    }
+
+    @Override
+    public void onTransportPreferencesResponse(List<String> preferences) {
+        preferredTransportModes = preferences;
     }
 
     @Override
@@ -67,6 +75,15 @@ public class MessageHandler implements MessageListener {
      */
     public List<String> getListOfMostProbableDestinations() {
         return nextDestinations;
+    }
+
+    /**
+     * Returns a list of the preferred transport modes.
+     *
+     * @return List of the preferred transport modes
+     */
+    public List<String> getListOfPreferredTransportModes() {
+        return preferredTransportModes;
     }
 
 }

@@ -38,6 +38,13 @@ public class MessageCreator {
     }
 
     /**
+     * Requests a list of transport mode preferences.
+     */
+    public void requestTransportModePreferences() {
+        sendMessage(ResponseCode.REQUEST_TRANSPORT_PREFERENCES);
+    }
+
+    /**
      * Sends the searched route to Mobility Profile so it can improve its suggestions.
      *
      * @param startLocation Starting location

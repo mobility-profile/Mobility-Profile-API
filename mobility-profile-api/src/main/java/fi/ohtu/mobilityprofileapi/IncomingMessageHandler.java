@@ -35,6 +35,9 @@ public class IncomingMessageHandler {
             case ResponseCode.RESPOND_MOST_LIKELY_SUGGESTIONS:
                 processSuggestions(msg);
                 break;
+            case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
+                messageListener.onTransportPreferencesResponse(msg.getData().getStringArrayList(""+msg.what));
+                break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();
                 break;

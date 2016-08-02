@@ -19,10 +19,21 @@ public class ResponseCode {
      */
     public static final int REQUEST_INTER_CITY_SUGGESTIONS = 103;
 
+
+    /**
+     * Request for transport mode preferences.
+     */
+    public static final int REQUEST_TRANSPORT_PREFERENCES = 105;
+
     /**
      * Response containing a list of likely suggestions.
      */
     public static final int RESPOND_MOST_LIKELY_SUGGESTIONS = 201;
+
+    /**
+     * Response containing a list of transport mode preferences.
+     */
+    public static final int RESPOND_TRANSPORT_PREFERENCES = 205;
 
     /**
      * Error code for unknown codes.
