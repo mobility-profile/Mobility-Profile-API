@@ -1,6 +1,7 @@
 package fi.ohtu.connectiontest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 import fi.ohtu.mobilityprofileapi.MessageListener;
@@ -11,7 +12,7 @@ import fi.ohtu.mobilityprofileapi.MessageListener;
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
     private String nextDestination = "NO SUGGESTION";
-    private ArrayList<String> nextDestinations;
+    private List<String> nextDestinations;
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
@@ -24,7 +25,8 @@ public class MessageHandler implements MessageListener {
     }
 
     @Override
-    public void onDisconnect() {}
+    public void onDisconnect() {
+    }
 
     @Override
     public void onSuggestionsResponse(String suggestion) {
@@ -32,16 +34,22 @@ public class MessageHandler implements MessageListener {
     }
 
     @Override
-    public void onSuggestionsResponse(ArrayList<String> suggestions) {
+    public void onSuggestionsResponse(List<String> suggestions) {
         nextDestinations = suggestions;
         if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
     }
 
     @Override
-    public void onNoSuggestions() {}
+    public void onNoSuggestions() {
+    }
 
     @Override
-    public void onUnknownCode() {}
+    public void onUnknownRequest() {
+    }
+
+    @Override
+    public void onUnknownResponse(int code) {
+    }
 
     /**
      * Returns the most probable destination Mobility Profile has suggested to us.
@@ -54,9 +62,10 @@ public class MessageHandler implements MessageListener {
 
     /**
      * Returns a list of the most probable destinations Mobility Profile has suggested to us.
+     *
      * @return List of the most probable destinations
      */
-    public ArrayList<String> getListOfMostProbableDestinations() {
+    public List<String> getListOfMostProbableDestinations() {
         return nextDestinations;
     }
 

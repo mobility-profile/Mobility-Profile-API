@@ -2,7 +2,7 @@ package fi.ohtu.connectiontest;
 
 import android.os.Bundle;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import fi.ohtu.mobilityprofileapi.AbstractMessageListener;
 import fi.ohtu.mobilityprofileapi.MobilityProfileApp;
@@ -25,7 +25,7 @@ public class ExampleActivity extends MobilityProfileApp {
             @Override
             public void onConnect() {
                 // We got connected to Mobility Profile, just request a list of suggested
-                // destinations. Note that this method is used for trips inside a city (or
+                // destinations. Note that this method is used for trips inside a city (or a
                 // metropolis).
                 mobilityProfile.requestIntraCitySuggestions();
 
@@ -40,7 +40,7 @@ public class ExampleActivity extends MobilityProfileApp {
             }
 
             @Override
-            public void onSuggestionsResponse(ArrayList<String> suggestions) {
+            public void onSuggestionsResponse(List<String> suggestions) {
                 // Mobility Profile responded to our request and sent a list of the most probable
                 // next destinations. Suggest destinations to the user in a pop up list or in some
                 // other way.
@@ -67,11 +67,18 @@ public class ExampleActivity extends MobilityProfileApp {
             }
 
             @Override
-            public void onUnknownCode() {
+            public void onUnknownRequest() {
                 // This method is called when we send an unknown code to Mobility Profile. This
                 // basically means the user is using an incompatible version of Mobility Profile
                 // that doesn't support the request we made. You can suggest the user to update
                 // their Mobility Profile or just ignore this completely.
+            }
+
+            @Override
+            public void onUnknownResponse(int code) {
+                // This method is called when Mobility Profile sends us an unknown code. This means
+                // your journey planner doesn't support the latest version of Mobility Profile or
+                // the user hasn't updated to the latest version.
             }
         });
     }
