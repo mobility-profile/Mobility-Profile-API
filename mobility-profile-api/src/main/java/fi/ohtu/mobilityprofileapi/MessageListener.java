@@ -1,9 +1,10 @@
 package fi.ohtu.mobilityprofileapi;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Interface for listening to incoming requests from the mobility profile.
+ * Interface for listening to connection and disconnection events and incoming responses from
+ * Mobility Profile.
  */
 public interface MessageListener {
     /**
@@ -20,17 +21,17 @@ public interface MessageListener {
      * This method is called when Mobility Profile responds to our request. List of suggestions
      * will be given as a parameter.
      *
-     * @param destination List of most likely next destinations
+     * @param suggestions List of the most likely next destinations
      */
-    void onSuggestionsResponse(ArrayList<String> destination);
+    void onSuggestionsResponse(List<String> suggestions);
 
     /**
      * This method is called when Mobility Profile responds to our request. The first suggestion
      * will be given as a parameter.
      *
-     * @param destination Most likely next destination
+     * @param suggestion The most likely next destination
      */
-    void onSuggestionsResponse(String destination);
+    void onSuggestionsResponse(String suggestion);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.
@@ -40,5 +41,12 @@ public interface MessageListener {
     /**
      * This method is called when we send an unknown code to Mobility Profile.
      */
-    void onUnknownCode();
+    void onUnknownRequest();
+
+    /**
+     * This method is called when Mobility Profile sends us an unknown code.
+     *
+     * @param code Response code
+     */
+    void onUnknownResponse(int code);
 }

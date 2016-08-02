@@ -10,64 +10,67 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * RemoteConnectionHandler is responsible for handling the communication with the mobility profile.
- * When the main activity is started, startConnection() should be called to create the connection
- * with the mobility profile. When the activity is stopped, stopConnection() should be called in
- * order to save resources.
- *
+ * When the main activity is started, {@link RemoteConnectionHandler#connectToService()} should be
+ * called to create the connection with the mobility profile. When the activity is stopped,
+ * {@link #disconnectFromService()} should be called in order to save resources.
+ * <p/>
  * Messages received from the mobility profile are forwarded to IncomingMessageHandler.
- * SendRequest() is used by MessageCreator to send requests to the mobility profile.
+ * <p/>
+ * {@link #sendRequest(Message)} is used by MessageCreator to send requests to the mobility profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
+    public static final String TAG = "Remote connection";
+
     private Context context;
     private IncomingMessageHandler incomingMessageHandler;
     private MessageListener messageListener;
 
-    private Messenger requestCreatorMessenger;
-    private Messenger incomingRequestMessenger;
+    private Messenger incomingMessenger;
+    private Messenger outgoingMessenger;
+
     private boolean isBound = false;
 
     /**
      * Creates the RemoteConnectionHandler.
      *
-     * @param context Context used for binding the service
+     * @param context                Context used for binding the service
      * @param incomingMessageHandler Handler for handling incoming messages
      */
     public RemoteConnectionHandler(Context context, IncomingMessageHandler incomingMessageHandler) {
         this.context = context;
         this.incomingMessageHandler = incomingMessageHandler;
 
-        this.incomingRequestMessenger = new Messenger(this);
+        this.incomingMessenger = new Messenger(this);
     }
 
     /**
-     * Connects to the remote service.
+     * Connects to Mobility Profile.
      */
-    public void startConnection() {
+    public void connectToService() {
         Intent intent = new Intent();
         intent.setClassName("fi.ohtu.mobilityprofile", "fi.ohtu.mobilityprofile.remoteconnection.RemoteService");
 
         try {
             context.bindService(intent, this, Context.BIND_AUTO_CREATE);
         } catch (SecurityException ex) {
-            Log.e("Remote Connection", "Permission to use Mobility Profile has not been granted");
+            Log.e(TAG, "Permission to use Mobility Profile has not been granted");
         }
     }
 
     /**
-     * Stops the connection to the remote service.
+     * Stops the connection to Mobility Profile.
      */
-    public void stopConnection() {
+    public void disconnectFromService() {
         if (isBound) {
             context.unbindService(this);
         }
     }
 
     /**
-     * Tells if we are connected to the remote service.
+     * Tells if we are connected to Mobility Profile
      *
      * @return True if connected, false otherwise
      */
@@ -76,29 +79,25 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
     }
 
     /**
-     * Sends a request to the mobility profile.
+     * Sends a request to Mobility Profile.
      *
      * @param message Message to be sent
      */
     public void sendRequest(Message message) {
         if (isBound()) {
-            assert requestCreatorMessenger != null : "RequestCreatorMessenger should not be null when bound to the service!";
+            assert outgoingMessenger != null : "OutgoingMessenger should not be null when bound to the service!";
 
             try {
                 // Set the ReplyTo messenger for processing the invocation response.
-                message.replyTo = incomingRequestMessenger;
+                message.replyTo = incomingMessenger;
 
                 // Make the invocation.
-                requestCreatorMessenger.send(message);
+                outgoingMessenger.send(message);
             } catch (RemoteException rme) {
-                if (context != null) {
-                    Toast.makeText(context, "Invocation failed!", Toast.LENGTH_SHORT).show();
-                }
+                Log.e(TAG, "Invocation failed");
             }
         } else {
-            if (context != null) {
-                Toast.makeText(context, "Service is not bound!", Toast.LENGTH_SHORT).show();
-            }
+            Log.e(TAG, "Service is not bound");
         }
     }
 
@@ -113,7 +112,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-        requestCreatorMessenger = new Messenger(service);
+        outgoingMessenger = new Messenger(service);
         isBound = true;
 
         assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
@@ -122,7 +121,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-        requestCreatorMessenger = null;
+        outgoingMessenger = null;
         isBound = false;
 
         assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";

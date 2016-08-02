@@ -2,9 +2,7 @@ package fi.ohtu.connectiontest;
 
 import android.webkit.JavascriptInterface;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
+import java.util.List;
 
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 
@@ -33,7 +31,7 @@ public class WebAppInterface {
     }
 
     private String convertListOfDestinationsToJson() {
-        ArrayList<String> destinations = messageHandler.getListOfMostProbableDestinations();
+        List<String> destinations = messageHandler.getListOfMostProbableDestinations();
         String jsonDestinations = "";
         try {
 

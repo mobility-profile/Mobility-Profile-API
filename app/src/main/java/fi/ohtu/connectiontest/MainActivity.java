@@ -52,10 +52,12 @@ public class MainActivity extends MobilityProfileApp {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
 
-        webview.destroy();
+        if (webview != null) {
+            webview.destroy();
+        }
     }
 
     @Override
