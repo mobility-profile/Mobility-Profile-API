@@ -25,18 +25,8 @@ public class ExampleActivity extends MobilityProfileApp {
             @Override
             public void onConnect() {
                 // We got connected to Mobility Profile, just request a list of suggested
-                // destinations. Note that this method is used for trips inside a city (or a
-                // metropolis).
+                // destinations.
                 mobilityProfile.requestIntraCitySuggestions();
-
-                // If you want to request suggestions for a trip between cities, use
-                // mobilityProfile.requestInterCitySuggestions() instead.
-            }
-
-            @Override
-            public void onDisconnect() {
-                // We got disconnected from Mobility Profile. This should only happen when the user
-                // exits the activity or opens a new activity.
             }
 
             @Override
@@ -51,34 +41,6 @@ public class ExampleActivity extends MobilityProfileApp {
                 // If this method is called, there is always at least one suggestion in the list.
                 // If Mobility Profile didn't have any relevant suggestions, onNoSuggestions() is
                 // called instead.
-            }
-
-            @Override
-            public void onSuggestionsResponse(String suggestion) {
-                // Same as onSuggestionsResponse, but instead of a list, this method gives just the
-                // first suggestion.
-
-                // If this method is called, it has always a valid suggestion as a parameter.
-            }
-
-            @Override
-            public void onNoSuggestions() {
-                // Mobility Profile got our request, but didn't have any relevant suggestions.
-            }
-
-            @Override
-            public void onUnknownRequest() {
-                // This method is called when we send an unknown code to Mobility Profile. This
-                // basically means the user is using an incompatible version of Mobility Profile
-                // that doesn't support the request we made. You can suggest the user to update
-                // their Mobility Profile or just ignore this completely.
-            }
-
-            @Override
-            public void onUnknownResponse(int code) {
-                // This method is called when Mobility Profile sends us an unknown code. This means
-                // your journey planner doesn't support the latest version of Mobility Profile or
-                // the user hasn't updated to the latest version.
             }
         });
     }

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * This class is just for convenience so you don't have to override all methods from
- * {@link MessageListener}
+ * {@link MessageListener}.
  */
 public abstract class AbstractMessageListener implements MessageListener {
     @Override
