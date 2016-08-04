@@ -24,7 +24,7 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onConnect() {
         mobilityProfile.requestIntraCitySuggestions();
-        //mobilityProfile.requestTransportModePreferences();
+        mobilityProfile.requestTransportModePreferences();
     }
 
     @Override
