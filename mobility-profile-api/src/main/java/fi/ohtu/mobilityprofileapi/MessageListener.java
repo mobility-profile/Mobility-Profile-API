@@ -1,5 +1,11 @@
 package fi.ohtu.mobilityprofileapi;
 
+import com.cocoahero.android.geojson.GeoJSON;
+import com.cocoahero.android.geojson.GeoJSONObject;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -31,6 +37,13 @@ public interface MessageListener {
      * @param suggestion The most likely next destination
      */
     void onSuggestionsResponse(String suggestion);
+
+    /**
+     * This method is called when Mobility Profile responds to our request. List of suggestions in
+     * JSON form will be given as a parameter.
+     * @param suggestions
+     */
+    void onSuggestionsResponse(JSONArray suggestions);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.
