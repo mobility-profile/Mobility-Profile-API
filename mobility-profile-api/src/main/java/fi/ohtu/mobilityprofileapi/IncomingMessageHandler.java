@@ -52,14 +52,14 @@ public class IncomingMessageHandler {
      * @param msg Message containing the suggestions
      */
     private void processSuggestions(Message msg) {
-        List<String> destinations = msg.getData().getStringArrayList(""+msg.what);
-        assert destinations != null : "Invalid response from Mobility Profile";
+        String destinations = msg.getData().getString(""+msg.what);
+//        List<String> destinations = msg.getData().getStringArrayList(""+msg.what);
+//        assert destinations != null : "Invalid response from Mobility Profile";
 
-        if (destinations.isEmpty()) {
+        if (destinations.equals("")) {
             messageListener.onNoSuggestions();
         }
         else {
-            messageListener.onSuggestionsResponse(destinations.get(0));
             messageListener.onSuggestionsResponse(destinations);
         }
     }

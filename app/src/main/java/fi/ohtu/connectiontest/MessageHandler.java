@@ -41,11 +41,11 @@ public class MessageHandler implements MessageListener {
         preferredTransportModes = preferences;
     }
 
-    @Override
-    public void onSuggestionsResponse(List<String> suggestions) {
-        nextDestinations = suggestions;
-        if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
-    }
+//    @Override
+//    public void onSuggestionsResponse(List<String> suggestions) {
+//        nextDestinations = suggestions;
+//        if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
+//    }
 
     @Override
     public void onNoSuggestions() {
@@ -68,14 +68,14 @@ public class MessageHandler implements MessageListener {
         return nextDestination;
     }
 
-    /**
-     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
-     *
-     * @return List of the most probable destinations
-     */
-    public List<String> getListOfMostProbableDestinations() {
-        return nextDestinations;
-    }
+//    /**
+//     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
+//     *
+//     * @return List of the most probable destinations
+//     */
+//    public List<String> getListOfMostProbableDestinations() {
+//        return nextDestinations;
+//    }
 
     /**
      * Returns a list of the preferred transport modes.

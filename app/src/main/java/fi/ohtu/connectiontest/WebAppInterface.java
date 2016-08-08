@@ -25,7 +25,8 @@ public class WebAppInterface {
 
     @JavascriptInterface
     public String getListOfMostProbableDestinations() {
-        return convertListOfDestinations();
+        System.out.println(messageHandler.getMostProbableDestination());
+        return messageHandler.getMostProbableDestination();
     }
 
     @JavascriptInterface
@@ -38,25 +39,25 @@ public class WebAppInterface {
         return convertListOfTransportModes();
     }
 
-    private String convertListOfDestinations() {
-        JSONObject object = new JSONObject();
-        JSONArray destinationsArray = new JSONArray();
-        List<String> destinations = messageHandler.getListOfMostProbableDestinations();
-
-        try {
-            for (int i = 0; i < destinations.size() ; i++) {
-                destinationsArray.put(destinations.get(i));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            object.put("destinations", destinationsArray);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return object.toString();
-    }
+//    private String convertListOfDestinations() {
+//        JSONObject object = new JSONObject();
+//        JSONArray destinationsArray = new JSONArray();
+//        List<String> destinations = messageHandler.getListOfMostProbableDestinations();
+//
+//        try {
+//            for (int i = 0; i < destinations.size() ; i++) {
+//                destinationsArray.put(destinations.get(i));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            object.put("destinations", destinationsArray);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return object.toString();
+//    }
 
     private String convertListOfTransportModes() {
         JSONObject object = new JSONObject();

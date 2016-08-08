@@ -19,9 +19,9 @@ public abstract class AbstractMessageListener implements MessageListener {
     public void onSuggestionsResponse(String destination) {
     }
 
-    @Override
-    public void onSuggestionsResponse(List<String> destinations) {
-    }
+//    @Override
+//    public void onSuggestionsResponse(List<String> destinations) {
+//    }
 
     @Override
     public void onTransportPreferencesResponse(List<String> preferences) {
