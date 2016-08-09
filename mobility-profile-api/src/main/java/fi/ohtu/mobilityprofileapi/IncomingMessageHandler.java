@@ -49,13 +49,12 @@ public class IncomingMessageHandler {
      * @param msg Message containing the suggestions
      */
     private void processSuggestions(Message msg) {
-        List<String> destinations = msg.getData().getStringArrayList(""+msg.what);
+        List<String> destinations = msg.getData().getStringArrayList("" + msg.what);
         assert destinations != null : "Invalid response from Mobility Profile";
 
         if (destinations.isEmpty()) {
             messageListener.onNoSuggestions();
-        }
-        else {
+        } else {
             messageListener.onSuggestionsResponse(destinations.get(0));
             messageListener.onSuggestionsResponse(destinations);
         }
