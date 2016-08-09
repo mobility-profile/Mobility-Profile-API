@@ -36,7 +36,7 @@ public class IncomingMessageHandler {
                 processSuggestions(msg);
                 break;
             case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
-                messageListener.onTransportPreferencesResponse(msg.getData().getStringArrayList(""+msg.what));
+                messageListener.onTransportPreferencesResponse(msg.getData().getString(""+msg.what));
                 break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();
@@ -53,10 +53,9 @@ public class IncomingMessageHandler {
      */
     private void processSuggestions(Message msg) {
         String destinations = msg.getData().getString(""+msg.what);
-//        List<String> destinations = msg.getData().getStringArrayList(""+msg.what);
-//        assert destinations != null : "Invalid response from Mobility Profile";
+        assert destinations != null : "Invalid response from Mobility Profile";
 
-        if (destinations.equals("")) {
+        if (destinations.equals("[]")) {
             messageListener.onNoSuggestions();
         }
         else {

@@ -1,8 +1,5 @@
 package fi.ohtu.connectiontest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 import fi.ohtu.mobilityprofileapi.MessageListener;
 
@@ -11,14 +8,11 @@ import fi.ohtu.mobilityprofileapi.MessageListener;
  */
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
-    private String nextDestination = "NO SUGGESTION";
-    private List<String> nextDestinations;
-    private List<String> preferredTransportModes;
+    private String nextDestinations = "NO SUGGESTION";
+    private String preferredTransportModes;
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
-        this.nextDestinations = new ArrayList<>();
-        this.preferredTransportModes = new ArrayList<>();
     }
 
     @Override
@@ -33,19 +27,13 @@ public class MessageHandler implements MessageListener {
 
     @Override
     public void onSuggestionsResponse(String suggestion) {
-        nextDestination = suggestion;
+        nextDestinations = suggestion;
     }
 
     @Override
-    public void onTransportPreferencesResponse(List<String> preferences) {
+    public void onTransportPreferencesResponse(String preferences) {
         preferredTransportModes = preferences;
     }
-
-//    @Override
-//    public void onSuggestionsResponse(List<String> suggestions) {
-//        nextDestinations = suggestions;
-//        if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
-//    }
 
     @Override
     public void onNoSuggestions() {
@@ -60,29 +48,20 @@ public class MessageHandler implements MessageListener {
     }
 
     /**
-     * Returns the most probable destination Mobility Profile has suggested to us.
+     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
      *
-     * @return Most probable destination
+     * @return List of the most probable destinations
      */
     public String getMostProbableDestination() {
-        return nextDestination;
+        return nextDestinations;
     }
-
-//    /**
-//     * Returns a list of the most probable destinations Mobility Profile has suggested to us.
-//     *
-//     * @return List of the most probable destinations
-//     */
-//    public List<String> getListOfMostProbableDestinations() {
-//        return nextDestinations;
-//    }
 
     /**
      * Returns a list of the preferred transport modes.
      *
      * @return List of the preferred transport modes
      */
-    public List<String> getListOfPreferredTransportModes() {
+    public String getListOfPreferredTransportModes() {
         return preferredTransportModes;
     }
 
