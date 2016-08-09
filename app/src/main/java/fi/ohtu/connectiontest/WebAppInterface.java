@@ -2,8 +2,6 @@ package fi.ohtu.connectiontest;
 
 import android.webkit.JavascriptInterface;
 
-import java.util.List;
-
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 
 public class WebAppInterface {
@@ -16,13 +14,8 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public String getMostProbableDestination() {
-        return messageHandler.getMostProbableDestination();
-    }
-
-    @JavascriptInterface
     public String getListOfMostProbableDestinations() {
-        return convertListOfDestinationsToJson();
+        return messageHandler.getMostProbableDestinations();
     }
 
     @JavascriptInterface
@@ -30,22 +23,8 @@ public class WebAppInterface {
         messageCreator.sendSearchedRoute(startLocation, destination);
     }
 
-    private String convertListOfDestinationsToJson() {
-        List<String> destinations = messageHandler.getListOfMostProbableDestinations();
-        String jsonDestinations = "";
-        try {
-
-            for (int i = 0; i < destinations.size() ; i++) {
-                if (i == destinations.size()-1) {
-                    jsonDestinations += destinations.get(i);
-                } else {
-                    jsonDestinations += (destinations.get(i) + "!");
-                }
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonDestinations;
+    @JavascriptInterface
+    public String getTransportModePreferences() {
+        return messageHandler.getListOfPreferredTransportModes();
     }
 }

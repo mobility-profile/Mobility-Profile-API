@@ -1,6 +1,7 @@
 package fi.ohtu.mobilityprofileapi;
 
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class IncomingMessageHandler {
             case ResponseCode.RESPOND_MOST_LIKELY_SUGGESTIONS:
                 processSuggestions(msg);
                 break;
+            case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
+                messageListener.onTransportPreferencesResponse(msg.getData().getString(""+msg.what));
+                break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();
                 break;
@@ -49,13 +53,12 @@ public class IncomingMessageHandler {
      * @param msg Message containing the suggestions
      */
     private void processSuggestions(Message msg) {
-        List<String> destinations = msg.getData().getStringArrayList("" + msg.what);
+        String destinations = msg.getData().getString(""+msg.what);
         assert destinations != null : "Invalid response from Mobility Profile";
 
-        if (destinations.isEmpty()) {
+        if (TextUtils.isEmpty(destinations)) {
             messageListener.onNoSuggestions();
         } else {
-            messageListener.onSuggestionsResponse(destinations.get(0));
             messageListener.onSuggestionsResponse(destinations);
         }
     }

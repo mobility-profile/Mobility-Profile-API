@@ -1,5 +1,6 @@
 package fi.ohtu.mobilityprofileapi;
 
+
 import java.util.List;
 
 /**
@@ -21,17 +22,17 @@ public interface MessageListener {
      * This method is called when Mobility Profile responds to our request. List of suggestions
      * will be given as a parameter.
      *
-     * @param suggestions List of the most likely next destinations
-     */
-    void onSuggestionsResponse(List<String> suggestions);
-
-    /**
-     * This method is called when Mobility Profile responds to our request. The first suggestion
-     * will be given as a parameter.
-     *
-     * @param suggestion The most likely next destination
+     * @param suggestion List of the most likely next destinations
      */
     void onSuggestionsResponse(String suggestion);
+
+    /**
+     * This method is called when Mobility Profile responds to our request. List of transport mode preferences
+     * will be given as a parameter.
+     *
+     * @param preferences List of the transport mode preferences
+     */
+    void onTransportPreferencesResponse(String preferences);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.

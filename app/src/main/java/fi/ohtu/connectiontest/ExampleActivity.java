@@ -30,9 +30,9 @@ public class ExampleActivity extends MobilityProfileApp {
             }
 
             @Override
-            public void onSuggestionsResponse(List<String> suggestions) {
-                // Mobility Profile responded to our request and sent a list of the most probable
-                // next destinations. Suggest destinations to the user in a pop up list or in some
+            public void onSuggestionsResponse(String suggestions) {
+                // Mobility Profile responded to our request and sent a string of the most probable
+                // next destinations in GeoJSON form in JSONArray. Suggest destinations to the user in a pop up list or in some
                 // other way.
 
                 // Note that onSuggestionsResponse(destination) will be called as well in case
