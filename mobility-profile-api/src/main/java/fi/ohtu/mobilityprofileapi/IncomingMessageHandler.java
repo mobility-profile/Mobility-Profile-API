@@ -37,7 +37,7 @@ public class IncomingMessageHandler {
                 processSuggestions(msg);
                 break;
             case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
-                messageListener.onTransportPreferencesResponse(msg.getData().getStringArrayList(""+msg.what));
+                messageListener.onTransportPreferencesResponse(msg.getData().getString(""+msg.what));
                 break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();

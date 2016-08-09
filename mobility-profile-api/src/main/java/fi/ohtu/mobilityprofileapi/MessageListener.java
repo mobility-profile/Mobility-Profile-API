@@ -19,10 +19,10 @@ public interface MessageListener {
     void onDisconnect();
 
     /**
-     * This method is called when Mobility Profile responds to our request. The first suggestion
+     * This method is called when Mobility Profile responds to our request. List of suggestions
      * will be given as a parameter.
      *
-     * @param suggestion The most likely next destination
+     * @param suggestion List of the most likely next destinations
      */
     void onSuggestionsResponse(String suggestion);
 
@@ -32,7 +32,7 @@ public interface MessageListener {
      *
      * @param preferences List of the transport mode preferences
      */
-    void onTransportPreferencesResponse(List<String> preferences);
+    void onTransportPreferencesResponse(String preferences);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.

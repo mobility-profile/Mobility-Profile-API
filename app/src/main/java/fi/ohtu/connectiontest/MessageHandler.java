@@ -1,8 +1,5 @@
 package fi.ohtu.connectiontest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 import fi.ohtu.mobilityprofileapi.MessageListener;
 
@@ -11,12 +8,11 @@ import fi.ohtu.mobilityprofileapi.MessageListener;
  */
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
-    private String nextDestinations;
-    private List<String> preferredTransportModes;
+    private String nextDestinations = "NO SUGGESTION";
+    private String preferredTransportModes;
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
-        this.preferredTransportModes = new ArrayList<>();
     }
 
     @Override
@@ -35,7 +31,7 @@ public class MessageHandler implements MessageListener {
     }
 
     @Override
-    public void onTransportPreferencesResponse(List<String> preferences) {
+    public void onTransportPreferencesResponse(String preferences) {
         preferredTransportModes = preferences;
     }
 
@@ -65,7 +61,7 @@ public class MessageHandler implements MessageListener {
      *
      * @return List of the preferred transport modes
      */
-    public List<String> getListOfPreferredTransportModes() {
+    public String getListOfPreferredTransportModes() {
         return preferredTransportModes;
     }
 
