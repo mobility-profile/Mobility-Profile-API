@@ -1,6 +1,7 @@
 package fi.ohtu.connectiontest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 import fi.ohtu.mobilityprofileapi.MessageListener;
@@ -10,54 +11,62 @@ import fi.ohtu.mobilityprofileapi.MessageListener;
  */
 public class MessageHandler implements MessageListener {
     private MessageCreator mobilityProfile;
-    private String nextDestination = "NO SUGGESTION";
-    private ArrayList<String> nextDestinations;
+    private String nextDestinations;
+    private List<String> preferredTransportModes;
 
     public MessageHandler(MessageCreator messageCreator) {
         this.mobilityProfile = messageCreator;
-        this.nextDestinations = new ArrayList<>();
+        this.preferredTransportModes = new ArrayList<>();
     }
 
     @Override
     public void onConnect() {
         mobilityProfile.requestIntraCitySuggestions();
+        mobilityProfile.requestTransportModePreferences();
     }
 
     @Override
-    public void onDisconnect() {}
-
-    @Override
-    public void onSuggestionsResponse(String suggestion) {
-        nextDestination = suggestion;
+    public void onDisconnect() {
     }
 
     @Override
-    public void onSuggestionsResponse(ArrayList<String> suggestions) {
+    public void onSuggestionsResponse(String suggestions) {
         nextDestinations = suggestions;
-        if (!nextDestinations.isEmpty()) nextDestination = nextDestinations.get(0);
     }
 
     @Override
-    public void onNoSuggestions() {}
+    public void onTransportPreferencesResponse(List<String> preferences) {
+        preferredTransportModes = preferences;
+    }
 
     @Override
-    public void onUnknownCode() {}
+    public void onNoSuggestions() {
+    }
 
-    /**
-     * Returns the most probable destination Mobility Profile has suggested to us.
-     *
-     * @return Most probable destination
-     */
-    public String getMostProbableDestination() {
-        return nextDestination;
+    @Override
+    public void onUnknownRequest() {
+    }
+
+    @Override
+    public void onUnknownResponse(int code) {
     }
 
     /**
      * Returns a list of the most probable destinations Mobility Profile has suggested to us.
+     *
      * @return List of the most probable destinations
      */
-    public ArrayList<String> getListOfMostProbableDestinations() {
+    public String getMostProbableDestinations() {
         return nextDestinations;
+    }
+
+    /**
+     * Returns a list of the preferred transport modes.
+     *
+     * @return List of the preferred transport modes
+     */
+    public List<String> getListOfPreferredTransportModes() {
+        return preferredTransportModes;
     }
 
 }

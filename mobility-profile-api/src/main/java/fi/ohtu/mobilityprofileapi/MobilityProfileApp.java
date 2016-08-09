@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Abstract class that sets up the connection to the mobility profile.
+ * Abstract class that sets up the connection to Mobility Profile.
  */
 public abstract class MobilityProfileApp extends AppCompatActivity {
     private RemoteConnectionHandler remoteConnectionHandler;
@@ -24,19 +24,19 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        remoteConnectionHandler.startConnection();
+        remoteConnectionHandler.connectToService();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        remoteConnectionHandler.stopConnection();
+        remoteConnectionHandler.disconnectFromService();
     }
 
     /**
-     * Sets the response listener that will be used for handling incoming requests. This method
-     * should be called from the activity's onCreate() method.
+     * Sets the response listener that will be used for handling incoming responses. This method
+     * should be called from the activity's {@link MobilityProfileApp#onCreate(Bundle)} method.
      *
      * @param messageListener Listener for incoming requests
      */

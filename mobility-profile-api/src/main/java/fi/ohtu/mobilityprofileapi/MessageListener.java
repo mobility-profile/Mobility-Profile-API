@@ -1,15 +1,11 @@
 package fi.ohtu.mobilityprofileapi;
 
-import com.cocoahero.android.geojson.GeoJSON;
-import com.cocoahero.android.geojson.GeoJSONObject;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Interface for listening to incoming requests from the mobility profile.
+ * Interface for listening to connection and disconnection events and incoming responses from
+ * Mobility Profile.
  */
 public interface MessageListener {
     /**
@@ -23,14 +19,6 @@ public interface MessageListener {
     void onDisconnect();
 
     /**
-     * This method is called when Mobility Profile responds to our request. List of suggestions
-     * will be given as a parameter.
-     *
-     * @param suggestions List of the most likely next destinations
-     */
-    void onSuggestionsResponse(ArrayList<String> suggestions);
-
-    /**
      * This method is called when Mobility Profile responds to our request. The first suggestion
      * will be given as a parameter.
      *
@@ -39,11 +27,12 @@ public interface MessageListener {
     void onSuggestionsResponse(String suggestion);
 
     /**
-     * This method is called when Mobility Profile responds to our request. List of suggestions in
-     * JSON form will be given as a parameter.
-     * @param suggestions
+     * This method is called when Mobility Profile responds to our request. List of transport mode preferences
+     * will be given as a parameter.
+     *
+     * @param preferences List of the transport mode preferences
      */
-    void onSuggestionsResponse(JSONArray suggestions);
+    void onTransportPreferencesResponse(List<String> preferences);
 
     /**
      * This method is called if Mobility Profile sends us an empty list of suggestions.
@@ -53,5 +42,12 @@ public interface MessageListener {
     /**
      * This method is called when we send an unknown code to Mobility Profile.
      */
-    void onUnknownCode();
+    void onUnknownRequest();
+
+    /**
+     * This method is called when Mobility Profile sends us an unknown code.
+     *
+     * @param code Response code
+     */
+    void onUnknownResponse(int code);
 }

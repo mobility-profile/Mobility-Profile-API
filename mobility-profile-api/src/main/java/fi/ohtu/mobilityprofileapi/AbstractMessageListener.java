@@ -1,10 +1,10 @@
 package fi.ohtu.mobilityprofileapi;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is just for convenience so you don't have to override all methods from
- * MessageListener.
+ * {@link MessageListener}.
  */
 public abstract class AbstractMessageListener implements MessageListener {
     @Override
@@ -20,7 +20,11 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onSuggestionsResponse(ArrayList<String> destinations) {
+    public void onSuggestionsResponse(List<String> destinations) {
+    }
+
+    @Override
+    public void onTransportPreferencesResponse(List<String> preferences) {
     }
 
     @Override
@@ -28,6 +32,10 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onUnknownCode() {
+    public void onUnknownRequest() {
+    }
+
+    @Override
+    public void onUnknownResponse(int code) {
     }
 }
