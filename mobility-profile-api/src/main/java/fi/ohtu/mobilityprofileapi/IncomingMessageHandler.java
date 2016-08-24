@@ -4,6 +4,14 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.cocoahero.android.geojson.GeoJSON;
+import com.cocoahero.android.geojson.GeoJSONObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,6 +68,39 @@ public class IncomingMessageHandler {
             messageListener.onNoSuggestions();
         } else {
             messageListener.onSuggestionsResponse(destinations);
+            messageListener.onSuggestionsResponse(convertToSuggestions(destinations));
         }
+    }
+
+    /**
+     * Converts a geoJSON string to list of {@link Suggestion} objects. Returns null if the given
+     * string can't be converted.
+     *
+     * @param geoJSON Suggestions as a geoJSON string
+     * @return List of converted suggestions
+     */
+    private List<Suggestion> convertToSuggestions(String geoJSON) {
+        try {
+            List<Suggestion> suggestions = new ArrayList<>();
+
+            JSONArray array = new JSONArray(geoJSON);
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject jsonObject = array.getJSONObject(i);
+
+                JSONArray coordinates = jsonObject.getJSONObject("geometry").getJSONArray("coordinates");
+                double longitude = (double) coordinates.get(0);
+                double latitude = (double) coordinates.get(1);
+
+                String address = jsonObject.getJSONObject("properties").getString("label");
+
+                suggestions.add(new Suggestion(address, longitude, latitude));
+            }
+
+            return suggestions;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

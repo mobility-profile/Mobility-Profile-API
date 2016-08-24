@@ -1,7 +1,10 @@
 package fi.ohtu.connectiontest;
 
+import java.util.List;
+
 import fi.ohtu.mobilityprofileapi.MessageCreator;
 import fi.ohtu.mobilityprofileapi.MessageListener;
+import fi.ohtu.mobilityprofileapi.Suggestion;
 
 /**
  * This class is just for demonstrating how you could use the mobility profile.
@@ -28,6 +31,10 @@ public class MessageHandler implements MessageListener {
     @Override
     public void onSuggestionsResponse(String suggestions) {
         nextDestinations = suggestions;
+    }
+
+    @Override
+    public void onSuggestionsResponse(List<Suggestion> suggestions) {
     }
 
     @Override

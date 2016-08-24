@@ -20,11 +20,19 @@ public interface MessageListener {
 
     /**
      * This method is called when Mobility Profile responds to our request. List of suggestions
-     * will be given as a parameter.
+     * will be given as a GEOJSON-string.
      *
-     * @param suggestion List of the most likely next destinations
+     * @param geojson List of the most likely next destinations
      */
-    void onSuggestionsResponse(String suggestion);
+    void onSuggestionsResponse(String geojson);
+
+    /**
+     * This method is called when Mobility Profile responds to our request. List of suggestions
+     * will be given as a list of Suggestion-objects.
+     *
+     * @param suggestions List of the most likely next destinations
+     */
+    void onSuggestionsResponse(List<Suggestion> suggestions);
 
     /**
      * This method is called when Mobility Profile responds to our request. List of transport mode preferences
