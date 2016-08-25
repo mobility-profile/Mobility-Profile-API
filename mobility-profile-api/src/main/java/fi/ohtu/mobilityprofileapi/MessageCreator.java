@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Message;
 
 /**
- * MessageCreator is responsible for creating requests to the mobility profile. This class does not
+ * MessageCreator is responsible for creating requests to Mobility Profile. This class does not
  * send the requests, it only creates them and then forwards them to {@link RemoteConnectionHandler}
  * to be sent to Mobility Profile.
  * <p>
@@ -48,7 +48,7 @@ public class MessageCreator {
      * Sends the searched route to Mobility Profile so it can improve its suggestions.
      *
      * @param startLocation Starting location
-     * @param destination Destination
+     * @param destination   Destination
      */
     public void sendSearchedRoute(String startLocation, String destination) {
         if (startLocation.equals("") || destination.equals("")) {
@@ -73,11 +73,11 @@ public class MessageCreator {
      * Sends a message to Mobility Profile with the given code and information.
      *
      * @param messageCode Message code
-     * @param info Additional information
+     * @param info        Additional information
      */
     private void sendMessage(int messageCode, String info) {
         Bundle bundle = new Bundle();
-        bundle.putString(""+messageCode, info);
+        bundle.putString("" + messageCode, info);
         Message message = Message.obtain(null, messageCode);
         message.setData(bundle);
 

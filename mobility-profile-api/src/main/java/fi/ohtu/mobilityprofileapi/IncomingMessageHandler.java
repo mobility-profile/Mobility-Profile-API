@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used for processing incoming messages from the mobility profile. Processed
+ * This class is used for processing incoming messages from Mobility Profile. Processed
  * messages are forwarded to the registered {@link MessageListener}.
  */
 public class IncomingMessageHandler {
@@ -45,7 +45,7 @@ public class IncomingMessageHandler {
                 processSuggestions(msg);
                 break;
             case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
-                messageListener.onTransportPreferencesResponse(msg.getData().getString(""+msg.what));
+                messageListener.onTransportPreferencesResponse(msg.getData().getString("" + msg.what));
                 break;
             case ResponseCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();
@@ -61,7 +61,7 @@ public class IncomingMessageHandler {
      * @param msg Message containing the suggestions
      */
     private void processSuggestions(Message msg) {
-        String destinations = msg.getData().getString(""+msg.what);
+        String destinations = msg.getData().getString("" + msg.what);
         assert destinations != null : "Invalid response from Mobility Profile";
 
         if (TextUtils.isEmpty(destinations)) {

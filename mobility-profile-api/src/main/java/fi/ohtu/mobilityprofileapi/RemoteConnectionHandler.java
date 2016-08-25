@@ -12,14 +12,14 @@ import android.os.RemoteException;
 import android.util.Log;
 
 /**
- * RemoteConnectionHandler is responsible for handling the communication with the mobility profile.
+ * RemoteConnectionHandler is responsible for handling the communication with Mobility Profile.
  * When the main activity is started, {@link RemoteConnectionHandler#connectToService()} should be
- * called to create the connection with the mobility profile. When the activity is stopped,
+ * called to create the connection with Mobility Profile. When the activity is stopped,
  * {@link #disconnectFromService()} should be called in order to save resources.
- * <p/>
- * Messages received from the mobility profile are forwarded to IncomingMessageHandler.
- * <p/>
- * {@link #sendRequest(Message)} is used by MessageCreator to send requests to the mobility profile.
+ * <p>
+ * Messages received from tMobility Profile are forwarded to IncomingMessageHandler.
+ * <p>
+ * {@link #sendRequest(Message)} is used by MessageCreator to send requests to Mobility Profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
     public static final String TAG = "Remote connection";

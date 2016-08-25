@@ -9,12 +9,12 @@ import java.util.List;
  */
 public interface MessageListener {
     /**
-     * This method is called when we get connected to the mobility profile.
+     * This method is called when we get connected to Mobility Profile.
      */
     void onConnect();
 
     /**
-     * This method is called when we get disconnected from the mobility profile.
+     * This method is called when we get disconnected from Mobility Profile.
      */
     void onDisconnect();
 
@@ -35,10 +35,10 @@ public interface MessageListener {
     void onSuggestionsResponse(List<Suggestion> suggestions);
 
     /**
-     * This method is called when Mobility Profile responds to our request. List of transport mode preferences
-     * will be given as a parameter.
+     * This method is called when Mobility Profile responds to our request to get information about
+     * transport mode preferences. List of transport mode preferences will be given as a parameter.
      *
-     * @param preferences List of the transport mode preferences
+     * @param preferences List of transport mode preferences
      */
     void onTransportPreferencesResponse(String preferences);
 

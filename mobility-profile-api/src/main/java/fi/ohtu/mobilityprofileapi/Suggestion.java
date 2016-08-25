@@ -11,9 +11,9 @@ public class Suggestion {
     /**
      * Creates a suggestion object with the given parameters.
      *
-     * @param address Address of the suggestion
+     * @param address   Address of the suggestion
      * @param longitude Longitude off the suggestion
-     * @param latitude Latitude of the suggestion
+     * @param latitude  Latitude of the suggestion
      */
     public Suggestion(String address, double longitude, double latitude) {
         this.address = address;
