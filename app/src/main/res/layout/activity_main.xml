@@ -5,35 +5,6 @@
     android:layout_height="match_parent"
     tools:context="fi.ohtu.connectiontest.MainActivity">
 
-    <!-- <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/destination"
-        android:text="Destination"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Invoke"
-        android:id="@+id/button"
-        android:onClick="searchTrip"
-        android:layout_below="@+id/destination"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:text="Start place"
-        android:layout_above="@+id/destination"
-        android:layout_marginBottom="42dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" /> -->
-
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
