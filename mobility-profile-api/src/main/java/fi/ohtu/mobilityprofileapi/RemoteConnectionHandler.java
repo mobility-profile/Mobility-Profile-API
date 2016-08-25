@@ -17,7 +17,7 @@ import android.util.Log;
  * called to create the connection with Mobility Profile. When the activity is stopped,
  * {@link #disconnectFromService()} should be called in order to save resources.
  * <p>
- * Messages received from tMobility Profile are forwarded to IncomingMessageHandler.
+ * Messages received from Mobility Profile are forwarded to IncomingMessageHandler.
  * <p>
  * {@link #sendRequest(Message)} is used by MessageCreator to send requests to Mobility Profile.
  */
