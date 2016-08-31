@@ -1,6 +1,5 @@
 package fi.ohtu.mobilityprofileapi;
 
-
 import java.util.List;
 
 /**
@@ -27,12 +26,12 @@ public interface MessageListener {
     void onSuggestionsResponse(String geojson);
 
     /**
-     * This method is called when Mobility Profile responds to our request. List of suggestions
-     * will be given as a list of Suggestion-objects.
+     * This method is called when Mobility Profile responds to our request. List of places
+     * will be given as a list of Place-objects.
      *
-     * @param suggestions List of the most likely next destinations
+     * @param places List of the most likely next destinations
      */
-    void onSuggestionsResponse(List<Suggestion> suggestions);
+    void onSuggestionsResponse(List<Place> places);
 
     /**
      * This method is called when Mobility Profile responds to our request to get information about

@@ -7,6 +7,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import fi.ohtu.mobilityprofileapi.MobilityProfileInterface;
 import fi.ohtu.mobilityprofileapi.MobilityProfileApp;
 
 public class MainActivity extends MobilityProfileApp {
@@ -17,8 +18,9 @@ public class MainActivity extends MobilityProfileApp {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MessageHandler messageHandler = new MessageHandler(mobilityProfile);
+        MessageHandler messageHandler = new MessageHandler(mobilityProfileInterface);
         setMessageListener(messageHandler);
+        mobilityProfileInterface.setMode(MobilityProfileInterface.MODE_INTRACITY);
 
         webview = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();
@@ -28,7 +30,7 @@ public class MainActivity extends MobilityProfileApp {
         webSettings.setDomStorageEnabled(true);
         webSettings.setGeolocationEnabled(true);
 
-        webview.addJavascriptInterface(new WebAppInterface(messageHandler, mobilityProfile), "MobilityProfile");
+        webview.addJavascriptInterface(new WebAppInterface(messageHandler, mobilityProfileInterface), "MobilityProfile");
 
         webview.setWebChromeClient(new WebChromeClient() {
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {

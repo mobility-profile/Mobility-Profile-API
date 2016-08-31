@@ -20,7 +20,7 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onSuggestionsResponse(List<Suggestion> suggestions) {
+    public void onSuggestionsResponse(List<Place> places) {
     }
 
     @Override

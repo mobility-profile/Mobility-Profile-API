@@ -2,25 +2,25 @@ package fi.ohtu.connectiontest;
 
 import java.util.List;
 
-import fi.ohtu.mobilityprofileapi.MessageCreator;
+import fi.ohtu.mobilityprofileapi.MobilityProfileInterface;
 import fi.ohtu.mobilityprofileapi.MessageListener;
-import fi.ohtu.mobilityprofileapi.Suggestion;
+import fi.ohtu.mobilityprofileapi.Place;
 
 /**
  * This class is just for demonstrating how you could use the mobility profile.
  */
 public class MessageHandler implements MessageListener {
-    private MessageCreator mobilityProfile;
+    private MobilityProfileInterface mobilityProfile;
     private String nextDestinations = "NO SUGGESTION";
     private String preferredTransportModes;
 
-    public MessageHandler(MessageCreator messageCreator) {
-        this.mobilityProfile = messageCreator;
+    public MessageHandler(MobilityProfileInterface mobilityProfileInterface) {
+        this.mobilityProfile = mobilityProfileInterface;
     }
 
     @Override
     public void onConnect() {
-        mobilityProfile.requestIntraCitySuggestions();
+        mobilityProfile.requestSuggestions();
         mobilityProfile.requestTransportModePreferences();
     }
 
@@ -34,7 +34,7 @@ public class MessageHandler implements MessageListener {
     }
 
     @Override
-    public void onSuggestionsResponse(List<Suggestion> suggestions) {
+    public void onSuggestionsResponse(List<Place> places) {
     }
 
     @Override

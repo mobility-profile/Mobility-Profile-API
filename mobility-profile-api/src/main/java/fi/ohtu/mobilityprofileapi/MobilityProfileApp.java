@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class MobilityProfileApp extends AppCompatActivity {
     private RemoteConnectionHandler remoteConnectionHandler;
     private IncomingMessageHandler incomingMessageHandler;
-    protected MessageCreator mobilityProfile;
+    protected MobilityProfileInterface mobilityProfileInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
 
         this.incomingMessageHandler = new IncomingMessageHandler();
         this.remoteConnectionHandler = new RemoteConnectionHandler(this, incomingMessageHandler);
-        this.mobilityProfile = new MessageCreator(remoteConnectionHandler);
+        this.mobilityProfileInterface = new MobilityProfileInterface(remoteConnectionHandler);
     }
 
     @Override

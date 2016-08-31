@@ -13,13 +13,14 @@ import android.util.Log;
 
 /**
  * RemoteConnectionHandler is responsible for handling the communication with Mobility Profile.
- * When the main activity is started, {@link RemoteConnectionHandler#connectToService()} should be
- * called to create the connection with Mobility Profile. When the activity is stopped,
+ * When the activity is started, {@link RemoteConnectionHandler#connectToService()} should be called
+ * to create the connection with Mobility Profile. When the activity is stopped,
  * {@link #disconnectFromService()} should be called in order to save resources.
- * <p>
- * Messages received from Mobility Profile are forwarded to IncomingMessageHandler.
- * <p>
- * {@link #sendRequest(Message)} is used by MessageCreator to send requests to Mobility Profile.
+ * <p/>
+ * Messages received from Mobility Profile are forwarded to {@link IncomingMessageHandler}.
+ * <p/>
+ * {@link #sendRequest(Message)} is used by {@link MobilityProfileInterface} to send requests to
+ * Mobility Profile.
  */
 public class RemoteConnectionHandler extends Handler implements ServiceConnection {
     public static final String TAG = "Remote connection";
@@ -48,15 +49,18 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
 
     /**
      * Connects to Mobility Profile.
+     *
+     * @return True if connected successfully, false otherwise
      */
-    public void connectToService() {
+    public boolean connectToService() {
         Intent intent = new Intent();
         intent.setClassName("fi.ohtu.mobilityprofile", "fi.ohtu.mobilityprofile.remoteconnection.RemoteService");
 
         try {
-            context.bindService(intent, this, Context.BIND_AUTO_CREATE);
+            return context.bindService(intent, this, Context.BIND_AUTO_CREATE);
         } catch (SecurityException ex) {
             Log.e(TAG, "Permission to use Mobility Profile has not been granted");
+            return false;
         }
     }
 
@@ -97,7 +101,7 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
                 Log.e(TAG, "Invocation failed");
             }
         } else {
-            Log.e(TAG, "Service is not bound");
+            Log.d(TAG, "Service is not bound");
         }
     }
 

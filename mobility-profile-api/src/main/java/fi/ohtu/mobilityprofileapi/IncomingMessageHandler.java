@@ -4,9 +4,6 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.cocoahero.android.geojson.GeoJSON;
-import com.cocoahero.android.geojson.GeoJSONObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,13 +38,13 @@ public class IncomingMessageHandler {
         Log.d(RemoteConnectionHandler.TAG, "Remote Service replied with code " + msg.what);
 
         switch (msg.what) {
-            case ResponseCode.RESPOND_MOST_LIKELY_SUGGESTIONS:
+            case MessageCode.RESPOND_SUGGESTIONS:
                 processSuggestions(msg);
                 break;
-            case ResponseCode.RESPOND_TRANSPORT_PREFERENCES:
+            case MessageCode.RESPOND_TRANSPORT_PREFERENCES:
                 messageListener.onTransportPreferencesResponse(msg.getData().getString("" + msg.what));
                 break;
-            case ResponseCode.ERROR_UNKNOWN_CODE:
+            case MessageCode.ERROR_UNKNOWN_CODE:
                 messageListener.onUnknownRequest();
                 break;
             default:
@@ -73,30 +70,30 @@ public class IncomingMessageHandler {
     }
 
     /**
-     * Converts a geoJSON string to list of {@link Suggestion} objects. Returns null if the given
+     * Converts a geoJSON string to list of {@link Place} objects. Returns null if the given
      * string can't be converted.
      *
      * @param geoJSON Suggestions as a geoJSON string
      * @return List of converted suggestions
      */
-    private List<Suggestion> convertToSuggestions(String geoJSON) {
+    private List<Place> convertToSuggestions(String geoJSON) {
         try {
-            List<Suggestion> suggestions = new ArrayList<>();
+            List<Place> places = new ArrayList<>();
 
             JSONArray array = new JSONArray(geoJSON);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jsonObject = array.getJSONObject(i);
 
                 JSONArray coordinates = jsonObject.getJSONObject("geometry").getJSONArray("coordinates");
-                double longitude = (double) coordinates.get(0);
-                double latitude = (double) coordinates.get(1);
+                float longitude = (float) coordinates.get(0);
+                float latitude = (float) coordinates.get(1);
 
                 String address = jsonObject.getJSONObject("properties").getString("label");
 
-                suggestions.add(new Suggestion(address, longitude, latitude));
+                places.add(new Place(address, longitude, latitude));
             }
 
-            return suggestions;
+            return places;
         } catch (JSONException e) {
             e.printStackTrace();
         }
