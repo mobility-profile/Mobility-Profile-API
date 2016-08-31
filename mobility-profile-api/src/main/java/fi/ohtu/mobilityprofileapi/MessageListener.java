@@ -34,17 +34,17 @@ public interface MessageListener {
     void onSuggestionsResponse(List<Place> places);
 
     /**
+     * This method is called if Mobility Profile sends us an empty list of suggestions.
+     */
+    void onNoSuggestions();
+
+    /**
      * This method is called when Mobility Profile responds to our request to get information about
      * transport mode preferences. List of transport mode preferences will be given as a parameter.
      *
      * @param preferences List of transport mode preferences
      */
     void onTransportPreferencesResponse(String preferences);
-
-    /**
-     * This method is called if Mobility Profile sends us an empty list of suggestions.
-     */
-    void onNoSuggestions();
 
     /**
      * This method is called when we send an unknown code to Mobility Profile.

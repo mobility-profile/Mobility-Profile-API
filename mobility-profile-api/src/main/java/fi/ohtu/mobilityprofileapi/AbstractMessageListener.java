@@ -24,11 +24,11 @@ public abstract class AbstractMessageListener implements MessageListener {
     }
 
     @Override
-    public void onTransportPreferencesResponse(String preferences) {
+    public void onNoSuggestions() {
     }
 
     @Override
-    public void onNoSuggestions() {
+    public void onTransportPreferencesResponse(String preferences) {
     }
 
     @Override
