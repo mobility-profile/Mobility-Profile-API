@@ -85,8 +85,8 @@ public class IncomingMessageHandler {
                 JSONObject jsonObject = array.getJSONObject(i);
 
                 JSONArray coordinates = jsonObject.getJSONObject("geometry").getJSONArray("coordinates");
-                float longitude = (float) coordinates.get(0);
-                float latitude = (float) coordinates.get(1);
+                float longitude = (float) coordinates.getDouble(0);
+                float latitude = (float) coordinates.getDouble(1);
 
                 String address = jsonObject.getJSONObject("properties").getString("label");
 
