@@ -5,7 +5,7 @@ package fi.ohtu.mobilityprofileapi;
  */
 public class MessageCode {
     /**
-     * Request for route suggestions inside a city or a metropolis.
+     * Request for route suggestions.
      */
     public static final int REQUEST_SUGGESTIONS = 100;
 
