@@ -33,7 +33,9 @@ public class IncomingMessageHandler {
      * @param msg Message to handle
      */
     public void handleMessage(Message msg) {
-        assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
+        if (messageListener == null) {
+            return;
+        }
 
         Log.d(RemoteConnectionHandler.TAG, "Remote Service replied with code " + msg.what);
 

@@ -11,6 +11,8 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
     private IncomingMessageHandler incomingMessageHandler;
     protected MobilityProfileInterface mobilityProfileInterface;
 
+    private MessageListener messageListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,11 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        remoteConnectionHandler.connectToService();
+        boolean connected = remoteConnectionHandler.connectToService();
+
+        if (!connected && messageListener != null) {
+            messageListener.onNotAvailable();
+        }
     }
 
     @Override
@@ -40,7 +46,9 @@ public abstract class MobilityProfileApp extends AppCompatActivity {
      *
      * @param messageListener Listener for incoming requests
      */
-    public void setMessageListener(MessageListener messageListener) {
+    public final void setMessageListener(MessageListener messageListener) {
+        this.messageListener = messageListener;
+
         incomingMessageHandler.setMessageListener(messageListener);
         remoteConnectionHandler.setMessageListener(messageListener);
     }

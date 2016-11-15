@@ -119,8 +119,9 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         outgoingMessenger = new Messenger(service);
         isBound = true;
 
-        assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
-        messageListener.onConnect();
+        if (messageListener != null) {
+            messageListener.onConnect();
+        }
     }
 
     @Override
@@ -128,8 +129,9 @@ public class RemoteConnectionHandler extends Handler implements ServiceConnectio
         outgoingMessenger = null;
         isBound = false;
 
-        assert messageListener != null : "MessageListener is not set! You should do that in the activity's onCreate() method.";
-        messageListener.onDisconnect();
+        if (messageListener != null) {
+            messageListener.onDisconnect();
+        }
     }
 
     @Override

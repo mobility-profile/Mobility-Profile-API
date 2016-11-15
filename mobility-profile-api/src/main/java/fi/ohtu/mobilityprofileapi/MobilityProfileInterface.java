@@ -42,6 +42,16 @@ public class MobilityProfileInterface {
     }
 
     /**
+     * Tells if Mobility Profile is available to use. This will be false even if Mobility Profile is
+     * installed on the device, if connecting to Mobility Profile fails.
+     *
+     * @return True if available, false otherwise
+     */
+    public final boolean isAvailable() {
+        return remoteConnectionHandler.isBound();
+    }
+
+    /**
      * Set the suggestions mode. This method should be called from the activity's
      * {@link MobilityProfileApp#onCreate(Bundle)} method. Available modes are
      * {@link MobilityProfileInterface#MODE_INTRACITY} and

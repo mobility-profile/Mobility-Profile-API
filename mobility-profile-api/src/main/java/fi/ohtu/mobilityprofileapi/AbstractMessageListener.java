@@ -38,4 +38,8 @@ public abstract class AbstractMessageListener implements MessageListener {
     @Override
     public void onUnknownResponse(int code) {
     }
+
+    @Override
+    public void onNotAvailable() {
+    }
 }

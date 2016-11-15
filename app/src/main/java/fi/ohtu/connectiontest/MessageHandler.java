@@ -54,6 +54,10 @@ public class MessageHandler implements MessageListener {
     public void onUnknownResponse(int code) {
     }
 
+    @Override
+    public void onNotAvailable() {
+    }
+
     /**
      * Returns a list of the most probable destinations Mobility Profile has suggested to us.
      *

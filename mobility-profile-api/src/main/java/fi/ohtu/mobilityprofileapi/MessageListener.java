@@ -57,4 +57,9 @@ public interface MessageListener {
      * @param code Response code
      */
     void onUnknownResponse(int code);
+
+    /**
+     * This method is called if connecting to Mobility Profile failed.
+     */
+    void onNotAvailable();
 }
